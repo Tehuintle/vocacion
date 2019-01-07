@@ -22,7 +22,7 @@ class Servicios_vocacion extends API_Controller{
         
         if($varIP != null){
                 $response = array('Estatus' => true,
-                                  'Mensaje' => "Se ha conectado correctamente..",
+                                  'Mensaje' => "Conexión con éxito..",
                                   'IP'      => $varIPAddress
                                 );
         }
@@ -33,16 +33,32 @@ class Servicios_vocacion extends API_Controller{
 
     public function loginCURP(){
         $response      = null;
-        $varIP         = $this->input->post("IP");
-        $varIPAddress  = $this->input->ip_address();
-        
-        if($varIP != null){
+        $varCurp         = $this->input->post("Curp");
+
+        $logueo = $this->servicios_modelo->usuarioCURP($varCurp);
+        $validaCurp = $this->servicios_modelo->buscarCURP($varCurp);
+
+        if (!$validaCurp) {
+            $response = array('Estatus' => false, 
+                                    'Mensaje' => "El Curp no existe");
+        }
+        elseif($logueo != null){
+            foreach ($logueo as $row) {
                 $response = array('Estatus' => true,
-                                  'Mensaje' => "Se ha conectado correctamente..",
-                                  'IP'      => $varIPAddress
-                                );
+                                        'Mensaje' => "Has ingresado correctamente",
+                                        'IdAlumno' => $row->id_alumno,
+                                        'Nombre' => $row->nombre,
+                                        'ApellidoP' => $row->apellido_p,
+                                        'ApellidoM' => $row->apellido_m,
+                                        'Grupo' => $row->grupo,
+                                        'Genero' => $row->genero,
+                                        'Curp' => $row->curp,
+                                        'FechaRegistro' => $row->Fecha_Registro
+                                    );
+            }
         }
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode ($response);
     }
+
 }

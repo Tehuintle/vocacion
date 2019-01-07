@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 //coneccion de servicios..
 $route['api/v1/user/connectionIP'] = 'servicios_vocacion/loginIP';
+$route['api/v1/user/connectionCURP'] = 'servicios_vocacion/loginCURP';

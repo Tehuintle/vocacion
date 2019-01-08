@@ -92,6 +92,39 @@ public class Respuesta extends AppCompatActivity {
         */
 
 
+        /* Tabla de ejemplos AREAS
+          4 - 3 - 2 - 1 - 3
+          0 - 4 - 3 - 2 - 4
+          1 - 0 - 4 - 3 - 1
+          2 - 1 - 0 - 4 - 2
+          0 - 1 - 1 - 0 - 0
+          0 - 2 - 0 - 4 - 3
+          2 - 1 - 2 - 2 - 1
+          3 - 0 - 0 - 4 - 1
+          2 - 1 - 4 - 0 - 0
+          4 - 1 - 0 - 4 - 0
+          __________________
+   Total: 27  18  9   10  12
+
+        */
+
+
+  /* Tabla de ejemplos CAPACITACION
+        * 4 - 3 - 2 - 1
+          0 - 4 - 3 - 2
+          1 - 0 - 4 - 3
+          2 - 1 - 0 - 4
+          4 - 1 - 0 - 1
+          2 - 2 - 3 - 4
+          1 - 1 - 0 - 0
+          2 - 1 - 2 - 4
+          ______________
+   Total: 12  18   9   10
+
+
+        */
+
+
 
         /* Aqui se valida para poder sacar los resultados */
         // POSICION NUMERO UNO  =====> INFORMÁTICA

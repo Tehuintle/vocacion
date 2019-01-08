@@ -2,9 +2,9 @@
     "url":"",
     "pregunta":"1.- Manejar bases de datos en una empresa",
     "opcion1":"Me gusta mucho",
-    "opcion2":"Me gusta algo",
-    "opcion3":"Me es indiferente",
-    "opcion4":"Me desagrada",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
     "opcion5":"Me desagrada mucho",
     "respuesta":"1. Me gusta mucho \n\n 2. Me gusta algo \n\n 3. Me es indiferente \n\n 4. Me desagrada \n\n 5. Me desagrada mucho"
   },

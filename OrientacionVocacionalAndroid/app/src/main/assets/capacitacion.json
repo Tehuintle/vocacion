@@ -1,0 +1,282 @@
+//PREGUNTAS DE CAPACITACION PARA EL TRABAJO
+
+[
+  {
+  "pregunta":"1. ¿Qué tanto te gustaría aprender en Paint?",
+  "opcion1":"Me gusta mucho",
+  "opcion2":"Me gusta poco",
+  "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+  "opcion4":"Me desagrada poco",
+  "opcion5":"Me desagrada mucho"
+},
+  {
+    "pregunta":"2. ¿Qué tanto te gustaría aprender a escribir rápido?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"3. ¿Qué tanto te gustaría te gustaría conocer como de se desarrolla los programas o aplicaciones?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"4. ¿Qué tanto te gustaría tener una empresa para que se dedique a reparación de celulares?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+
+  {
+    "pregunta":"5. ¿Qué tanto te gustaría aprender a calcular en Excel?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"6. ¿Qué tanto te gustaría aprender a editar fotos en un programa de computadora?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+
+  {
+    "pregunta":"7. ¿Qué tanto te gustaría estudiar informática?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"8. ¿Qué tanto te gustaría ser a futuro Ing. Sistemas?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+
+   {
+    "pregunta":"9. ¿Te gustaría conocer unas puntadas de costura?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"10.	¿Te gusta la costura?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"11. ¿Conoces las etapas de costura de alguna prenda?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"12.	¿Te gustaría formar parte de un grupo de costura?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"13.	¿Te gustaría aprender algunos cortes para la elaboración de alguna prenda?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"14. ¿Quieres aprender a coser?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"15.	¿Te gustaría aprender a diseñar prendas?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"16. ¿Te gustaría tener una tienda de ropa hechas por ti misma?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+
+  {
+    "pregunta":"17.	¿Te gusta cocinar?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"18.	¿La comida que haces siempre te ha salido rico?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"19.	¿Sabes perfectamente que ingredientes debe llevar cada comida?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"20.	¿Te gustaría aprender a hacer platillos diferentes a las que comúnmente preparas?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+
+ {
+    "pregunta":"21.	¿Te gustaría aprender a hacer tus propios postres?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+ {
+    "pregunta":"22.	¿Te gustaría aprender más a cocinar?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+
+  {
+    "pregunta":"23.	¿Si te dieran ingredientes fijos, sabrías cocinarlos?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"24.	¿Te gustaría hacer comida para venderlo?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"25.	¿Te gusta hacer cortes de cabello o peinados?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"26.	¿Sabes perfectamente que tipo de peinados o corte le queda a una persona?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"27.	¿Has hecho un peinado para una fiesta?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"28.	¿Sabes los tipos de maquillaje para cada ocasión?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"29.	¿Te gustaría aprender a hacer maquillaje perfecto para cada ocasión?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"30.	¿Te gustaría hacer cortes y peinado que vayan acorde a una persona?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"31.	¿Te gustaría ser parte de un grupo de belleza?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"32.	¿Te gusta peinar todo tipo de cabello?",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

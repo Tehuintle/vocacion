@@ -1,40 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorGrey">
-    <LinearLayout
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnSiguiente"
-            android:layout_width="170dp"
+	<android.support.design.widget.AppBarLayout
+		android:id="@+id/appBarLayout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:theme="@style/AppTheme.AppBarOverlay">
+		<android.support.v7.widget.Toolbar
+			android:id="@+id/toolbar_semanal"
+			android:layout_width="match_parent"
+			android:layout_height="?attr/actionBarSize"
+			android:background="@color/colorPrimary"
+			app:popupTheme="@style/AppTheme.PopupOverlay" >
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textColor="@color/colorWhite"
+					android:textStyle="bold"
+					android:textSize="19dp"
+					android:text="Orientación vocacional"/>
+			</RelativeLayout>
+		</android.support.v7.widget.Toolbar>
+	</android.support.design.widget.AppBarLayout>
+
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginBottom="8dp"
+		android:text="Test"
+		android:textAlignment="center"
+		android:textColor="@color/colorBlack"
+		android:textSize="25dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.214" />
+
+	<LinearLayout
+		android:id="@+id/linearLayout"
+		android:layout_width="match_parent"
+		android:layout_height="438dp"
+		android:layout_margin="@dimen/general_margin"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginBottom="8dp"
+		android:gravity="center"
+		android:measureWithLargestChild="false"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/textView"
+		app:layout_constraintStart_toEndOf="@+id/textView"
+		app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+		tools:ignore="MissingConstraints">
+
+		<!--TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/botton"
-            android:text="Siguiente"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
             android:textStyle="bold"
-            android:textSize="18dp"
-            android:textAllCaps="false" />
-    </LinearLayout>
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:text="@string/bienvenida"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/title"
+            android:textSize="17dp" />
+
+        <EditText
+            android:id="@+id/edtNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext"
+            android:hint="Nombre"
+            android:ems="10"
+            android:inputType="text" >
+            <requestFocus />
+        </EditText-->
 
 
-    <com.mindorks.placeholderview.SwipePlaceHolderView
-        android:id="@+id/swipeView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/line1"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="2dp" />
-</RelativeLayout>
+		<Button
+			android:id="@+id/btnAreas"
+			android:layout_width="180dp"
+			android:layout_height="wrap_content"
+			android:background="@color/colorPrimary"
+			android:text="Áreas"
+			android:textAllCaps="false"
+			android:textColor="@color/colorWhite"
+			android:textSize="19dp"
+			android:textStyle="bold"
+			android:typeface="normal" />
+
+		<Button
+			android:id="@+id/btnTics"
+			android:layout_width="180dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/general_top"
+			android:background="@color/colorPrimary"
+			android:text="TISC´S"
+			android:textAllCaps="false"
+			android:textColor="@color/colorWhite"
+			android:textSize="19dp"
+			android:textStyle="bold"
+			android:typeface="normal" />
+
+		<Button
+			android:id="@+id/btnCapacitacion"
+			android:layout_width="180dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/general_top"
+			android:background="@color/colorPrimary"
+			android:text="Capacitación"
+			android:textAllCaps="false"
+			android:textColor="@color/colorWhite"
+			android:textSize="19dp"
+			android:textStyle="bold"
+			android:typeface="normal" />
+
+
+	</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

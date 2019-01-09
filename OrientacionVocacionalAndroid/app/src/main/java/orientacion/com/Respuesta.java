@@ -7,8 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import orientacion.com.basedatos.DBHelper;
 
 public class Respuesta extends AppCompatActivity {
 

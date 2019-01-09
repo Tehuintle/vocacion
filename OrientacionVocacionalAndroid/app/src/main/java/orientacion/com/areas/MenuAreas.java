@@ -1,4 +1,4 @@
-package orientacion.com;
+package orientacion.com.areas;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -14,9 +14,14 @@ import com.mindorks.placeholderview.SwipePlaceHolderView;
 
 import java.util.ArrayList;
 
-import orientacion.com.util.Utils;
+import orientacion.com.basedatos.DBHelper;
+import orientacion.com.api.response.PreguntasResponse;
+import orientacion.com.DatosAuxiliar;
+import orientacion.com.R;
+import orientacion.com.Respuesta;
+import orientacion.com.util.LoadJSONFromAsset;
 
-public class MenuPreguntas extends AppCompatActivity {
+public class MenuAreas extends AppCompatActivity {
 
     private SwipePlaceHolderView mSwipeView;
     private ArrayList<String> arrayList = new ArrayList<String>();
@@ -32,7 +37,7 @@ public class MenuPreguntas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_menu_capacitacion);
         mSwipeView = (SwipePlaceHolderView)findViewById(R.id.swipeView);
 
         Bundle bundle = getIntent().getExtras();
@@ -49,12 +54,12 @@ public class MenuPreguntas extends AppCompatActivity {
 
         //PINTAMOS LAS RESPUESTAS
         try {
-            for(Datos datos : Utils.loadProfiles(this.getApplicationContext())){
+            for(PreguntasResponse datos : LoadJSONFromAsset.loadContent(this.getApplicationContext(), "capacitacion.json")){
                 mSwipeView.addView(new CardView(this, datos, mSwipeView));
                 arrayList.add(datos.getPregunta());
             }
         }catch (NullPointerException e){
-            Log.i("RESULTADO", "No se encontrÛ resultados");
+            Log.i("RESULTADO", "No se encontro resultados");
         }
 
 
@@ -91,14 +96,14 @@ public class MenuPreguntas extends AppCompatActivity {
                     convertirTextoResultValidacion = "";
                 }if (convertirTextoResultValidacion.equals("")) {
                     if (contadorRegistroIteracionDos <= 16 ){
-                        Toast.makeText(MenuPreguntas.this, "Debes seleccionar una respuesta", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MenuAreas.this, "Debes seleccionar una respuesta", Toast.LENGTH_LONG).show();
                     }
                 }
                 /* validamos si ya termino las preguntas para pasar al siguiente venta al resultado final */
                 if (indexOfTarget == 17 ){
                     Log.d("RESULTADO", "TOTAL: "+arrayListPreguntas.size());
 
-                    Intent intent = new Intent(MenuPreguntas.this, Respuesta.class);
+                    Intent intent = new Intent(MenuAreas.this, Respuesta.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("nombre", nombre);
                     intent.putExtras(bundle);

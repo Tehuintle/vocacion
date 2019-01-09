@@ -36,10 +36,11 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="10dp"
+			android:hint="BADD110313HCMLNS09"
+			android:maxLength="18"
 			android:textAlignment="center"
 			android:background="@drawable/edittext"
 			android:inputType="textCapCharacters">
-			<requestFocus />
 		</EditText>
 
 	</LinearLayout>
@@ -53,7 +54,7 @@
 		android:layout_marginEnd="8dp"
 		android:layout_marginBottom="10dp"
 		android:background="@drawable/botton"
-		android:text="Conectar"
+		android:text="Siguiente"
 		android:textAllCaps="false"
 		android:textColor="@color/colorWhite"
 		android:textSize="18dp"

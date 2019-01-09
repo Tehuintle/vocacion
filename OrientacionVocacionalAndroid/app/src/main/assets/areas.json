@@ -1,0 +1,449 @@
+//PREGUNTAS DE ÁREAS
+
+[
+  {
+  "pregunta":"1.- Atender y cuidar enfermos",
+  "opcion1":"Me gusta mucho",
+  "opcion2":"Me gusta poco",
+  "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+  "opcion4":"Me desagrada poco",
+  "opcion5":"Me desagrada mucho"
+},
+  {
+    "pregunta":"2.- Intervenir activamente en las discusiones de la clase",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"3.- Escribir cuentos, crónicas o artículos",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"4.- Dibujar y pintar",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"5.- Cantar en un coro estudiantil",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"6.- Llevar en orden tus libros y libretas",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"7.- Conocer y estudiar la estructura de las plantas y animales",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"8.- Resolver operaciones numéricas",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"9.- Armar o desarmar objetos mecánicos",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"10.- Salir de excursión",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"11.- Proteger a los muchachos menores del grupo",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"12.- Ser jefe de un grupo",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"13.- Leer obras literarias",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"14.- Moldear un barro, plastilina",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"15.- Escuchar música clásica",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"16.- Ordenar y clasificar los libros de una biblioteca",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"17.- Hacer experimentos de un laboratorio",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"18.- Resolver problemas de aritmética",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"19.- Manejar herramientas y maquinarias",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"20.- Pertenecer a un club de exploradores",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"21.- Ser miembro de una sociedad de ayuda y asistencia",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"22.- Dirigir la campaña política de un candidato estudiantil",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"23.- Hacer versos para una publicación",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"24.- Encargarse de decorado del lugar de un festival",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"25.- Aprender a tocar un instrumento musical",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"26.- Aprender a escribir en máquina taquigrafía",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"27.- Investigar el origen de las costumbres de los pueblos",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"28.- Llevar las cuentas de una institución",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"29.- Construir objetos o muebles",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"30.- Trabajar al aire libre fuera de la ciudad",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+    {
+    "pregunta":"31.- Enseñar a leer a los analfabetos",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"32.- Hacer propaganda para la difusión de una idea",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"33.- Representar un papel en una obra de teatro",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"34.- Idear y diseñar el escudo de un club o sociedad",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"35.- Ser miembro de un grupo musical",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"36.-Ayudar a calificar pruebas",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"37.- Explicar a otros cómo resolver problemas de matemáticas",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"38.- Estudiar y entender las causas de los movimientos sociales",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"39.- Repara las instalaciones eléctricas de gas o de plomería en tu casa",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+    {
+    "pregunta":"40.- Sembrar y plantar en una granja durante las vacaciones",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+{
+    "pregunta":"41.- Leer biografías de políticos eminentes",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"42.- Ayudar a los compañeros en sus dificultades y preocupaciones",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"43.- Participar en un concurso de oratoria",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+
+  {
+    "pregunta":"44.- Diseñar el vestuario para una función teatral",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"45.- Leer biografías de músicos eminentes",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"46.- Encargarte del archivo y los documentos de una sociedad",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"47.- Leer revistas y libros científicos",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"48.- Participar en concursos de matemáticas",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+   {
+    "pregunta":"49.- Proyectar y dirigir alguna construcción",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  },
+  {
+    "pregunta":"50.- Atender animales en un rancho durante las vacaciones",
+    "opcion1":"Me gusta mucho",
+    "opcion2":"Me gusta poco",
+    "opcion3":"Me es indiferente, pues ni me gusta ni me disgusta",
+    "opcion4":"Me desagrada poco",
+    "opcion5":"Me desagrada mucho"
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,19 +14,19 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import orientacion.com.Datos;
+import orientacion.com.api.response.PreguntasResponse;
 
-public class Utils {
-    private static final String TAG = "Utils";
+public class LoadJSONFromAsset {
+    private static final String TAG = "LoadJSONFromAsset";
 
-    public static List<Datos> loadProfiles(Context context){
+    public static List<PreguntasResponse> loadContent(Context context, String jsonFileName){
         try{
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
-            JSONArray array = new JSONArray(loadJSONFromAsset(context, "preguntas.json"));
-            List<Datos> datosList = new ArrayList<>();
+            JSONArray array = new JSONArray(loadJSONFromAsset(context, jsonFileName));
+            List<PreguntasResponse> datosList = new ArrayList<>();
             for(int i=0;i<array.length();i++){
-                Datos datos = gson.fromJson(array.getString(i), Datos.class);
+                PreguntasResponse datos = gson.fromJson(array.getString(i), PreguntasResponse.class);
                 datosList.add(datos);
             }
             return datosList;

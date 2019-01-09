@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OrientacionVocacional</string>
+    <string name="app_name">Orientacion Vocacional</string>
 
     <string name="bienvenida">A continuación se te presentan diversas opciones, por favor indica que tanto te gustaría realizarlas dando click en el circulo que elijas</string>
     <string name="title">Digite su nombre para poder acceder a las preguntas.</string>

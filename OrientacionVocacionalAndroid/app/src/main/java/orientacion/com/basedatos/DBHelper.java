@@ -1,4 +1,4 @@
-package orientacion.com;
+package orientacion.com.basedatos;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

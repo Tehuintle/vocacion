@@ -1,9 +1,9 @@
-package orientacion.com;
+package orientacion.com.api.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Datos {
+public class PreguntasResponse {
 
     @SerializedName("pregunta")
     @Expose

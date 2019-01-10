@@ -16,11 +16,11 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 
-import orientacion.com.api.response.PreguntasResponse;
 import orientacion.com.R;
+import orientacion.com.api.response.PreguntasResponse;
 
 @Layout(R.layout.card_view)
-public class CardView {
+public class CardViewAreas {
 
     @View(R.id.preguntaNameTxt)
     private TextView preguntaNameTxt;
@@ -49,7 +49,7 @@ public class CardView {
     private Activity activity;
     private SwipePlaceHolderView mSwipeView;
 
-    public CardView(Activity activity, PreguntasResponse datos, SwipePlaceHolderView swipeView) {
+    public CardViewAreas(Activity activity, PreguntasResponse datos, SwipePlaceHolderView swipeView) {
         this.activity =  activity;
         mDatos = datos;
         mSwipeView = swipeView;

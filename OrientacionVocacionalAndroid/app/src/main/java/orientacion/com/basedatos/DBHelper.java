@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-
 public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -15,12 +13,14 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table usuarios(id integer primary key autoincrement, puntos int)");
+        db.execSQL("create table areas(id integer primary key autoincrement, puntos int)");
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("create table usuarios(id integer primary key autoincrement, puntos int )");
+        db.execSQL("create table areas(id integer primary key autoincrement, puntos int )");
     }
 
 }

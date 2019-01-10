@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import orientacion.com.areas.MenuAreas;
+import orientacion.com.capacitacion.MenuCapacitacion;
+import orientacion.com.tics.MenuTics;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class MenuActivity extends AppCompatActivity {
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuActivity.this, MenuAreas.class);
 				Bundle bundle = new Bundle();
-				bundle.putString("nombre", "Robot");
+				bundle.putString("nombre", "USUARIO");
 				intent.putExtras(bundle);
 				startActivityForResult(intent, 1);
 			}
@@ -30,9 +30,9 @@ public class MenuActivity extends AppCompatActivity {
 		findViewById(R.id.btnTics).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, MenuAreas.class);
+				Intent intent = new Intent(MenuActivity.this, MenuTics.class);
 				Bundle bundle = new Bundle();
-				bundle.putString("nombre", "Robot");
+				bundle.putString("nombre", "USUARIO");
 				intent.putExtras(bundle);
 				startActivityForResult(intent, 1);
 			}
@@ -41,9 +41,9 @@ public class MenuActivity extends AppCompatActivity {
 		findViewById(R.id.btnCapacitacion).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, MenuAreas.class);
+				Intent intent = new Intent(MenuActivity.this, MenuCapacitacion.class);
 				Bundle bundle = new Bundle();
-				bundle.putString("nombre", "Robot");
+				bundle.putString("nombre", "USUARIO");
 				intent.putExtras(bundle);
 				startActivityForResult(intent, 1);
 			}

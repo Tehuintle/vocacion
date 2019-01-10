@@ -1,4 +1,4 @@
-package orientacion.com;
+package orientacion.com.capacitacion;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,9 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import orientacion.com.R;
 import orientacion.com.basedatos.DBHelper;
 
-public class Respuesta extends AppCompatActivity {
+public class RespuestaCapacitacion extends AppCompatActivity {
 
     private TextView txtResultado, txtUsuario;
     private String respuestas="", nombre="";

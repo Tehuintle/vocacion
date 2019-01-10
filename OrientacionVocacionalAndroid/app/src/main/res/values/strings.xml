@@ -4,5 +4,9 @@
     <string name="bienvenida">A continuación se te presentan diversas opciones, por favor indica que tanto te gustaría realizarlas dando click en el circulo que elijas</string>
     <string name="title">Digite su nombre para poder acceder a las preguntas.</string>
 	<string name="ok">Activar</string>
+	<string name="response">Responde cuanto te gustaría hacer lo siguiente:</string>
+	<string name="tics1">Selecciona los dispositivos con los que cuenta:</string>
+	<string name="tics2">Seleccione los servicios de Redes con los que cuenta:</string>
+	<string name="tics3">Selecciona los dispositivos con los que cuenta:</string>
 
 </resources>

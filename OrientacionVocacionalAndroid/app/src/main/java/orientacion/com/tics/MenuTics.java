@@ -1,4 +1,4 @@
-package orientacion.com.areas;
+package orientacion.com.tics;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -15,12 +16,13 @@ import com.mindorks.placeholderview.SwipePlaceHolderView;
 import java.util.ArrayList;
 
 import orientacion.com.DatosAuxiliar;
+import orientacion.com.MenuActivity;
 import orientacion.com.R;
-import orientacion.com.api.response.PreguntasResponse;
+import orientacion.com.api.response.TicsResponse;
 import orientacion.com.basedatos.DBHelper;
-import orientacion.com.util.LoadJSONFromAsset;
+import orientacion.com.util.LoadJSONFromAssetTics;
 
-public class MenuAreas extends AppCompatActivity {
+public class MenuTics extends AppCompatActivity {
 
     private SwipePlaceHolderView mSwipeView;
     private ArrayList<String> arrayList = new ArrayList<String>();
@@ -28,7 +30,7 @@ public class MenuAreas extends AppCompatActivity {
     private DBHelper admin;
     private SQLiteDatabase bdatos;
     private ContentValues values;
-    private String convertirTextoResultValidacion = "", convertirTextoResult = "", nombre="";
+    private String convertirTextoResultValidacion = "2", convertirTextoResult = "", nombre="";
 
 
     ArrayList<DatosAuxiliar> arrayListPreguntas = new ArrayList<DatosAuxiliar>();
@@ -42,6 +44,11 @@ public class MenuAreas extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         nombre = bundle.getString("nombre");
 
+		TextView tvTitle = (TextView)findViewById(R.id.tvTitle);
+		tvTitle.setText("Orientacion Vocacional");
+		Button btnSiguiente = (Button)findViewById(R.id.btnSiguiente);
+		btnSiguiente.setText("Guardar");
+
         //CONFIGURAMOS CARDVIEW PARA LAS PREGUNTAS
         mSwipeView.disableTouchSwipe();
         mSwipeView.getBuilder()
@@ -53,8 +60,8 @@ public class MenuAreas extends AppCompatActivity {
 
         //PINTAMOS LAS RESPUESTAS
         try {
-            for(PreguntasResponse datos : LoadJSONFromAsset.loadContent(this.getApplicationContext(), "areas.json")){
-                mSwipeView.addView(new CardViewAreas(this, datos, mSwipeView));
+            for(TicsResponse datos : LoadJSONFromAssetTics.loadContent(this.getApplicationContext(), "tics_table.json")){
+                mSwipeView.addView(new CardViewTics(this, datos, mSwipeView));
                 arrayList.add(datos.getPregunta());
             }
         }catch (NullPointerException e){
@@ -66,8 +73,8 @@ public class MenuAreas extends AppCompatActivity {
         admin = new DBHelper(this,null,null,1);
         bdatos = admin.getWritableDatabase();
         /* Limpiamos la tabla cada que inicie sesion al usuario */
-        bdatos.execSQL("delete from areas");
-        bdatos.execSQL("delete from sqlite_sequence where name='areas' ");
+        bdatos.execSQL("delete from usuarios");
+        bdatos.execSQL("delete from sqlite_sequence where name='usuarios' ");
         values = new ContentValues();
 
 
@@ -75,41 +82,15 @@ public class MenuAreas extends AppCompatActivity {
         findViewById(R.id.btnSiguiente).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* validamos si se ha seleccionado una respuesta */
-                if (convertirTextoResultValidacion.length() > 0) {
-                    mSwipeView.doSwipe(false);
+				mSwipeView.doSwipe(false);
+				indexOfTarget++;
+				if (indexOfTarget == 4 ){
+					Intent intent = new Intent(MenuTics.this, MenuActivity.class);
+					startActivityForResult(intent,1);
+					finish();
+				}
 
-                    int resultadoEntero = Integer.parseInt(convertirTextoResult);
-                    DatosAuxiliar valores = new DatosAuxiliar(0, resultadoEntero,0,0, 0);
-                    arrayListPreguntas.add(valores);
-                    Log.d("RESULTADO", "INSERTADO: "+ resultadoEntero);
-
-                    values.put("puntos", resultadoEntero);
-                    bdatos.insert("areas", null, values);
-
-                    indexOfTarget++;
-                    contadorRegistroIteracionDos ++;
-                    convertirTextoResultValidacion = "";
-                }if (convertirTextoResultValidacion.equals("")) {
-                    if (contadorRegistroIteracionDos <= 16 ){
-                        Toast.makeText(MenuAreas.this, "Debes seleccionar una respuesta", Toast.LENGTH_LONG).show();
-                    }
-                }
-                /* validamos si ya termino las preguntas para pasar al siguiente venta al resultado final */
-                if (indexOfTarget == 17 ){
-                    Log.d("RESULTADO", "TOTAL: "+arrayListPreguntas.size());
-
-                    Intent intent = new Intent(MenuAreas.this, RespuestaAreas.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("nombre", nombre);
-                    intent.putExtras(bundle);
-                    startActivityForResult(intent,1);
-                    bdatos.close();
-                    finish();
-                }
-
-                Log.i("RESULTADO", "click contador: " + indexOfTarget);
-            }
+			}
         });
     }
 

@@ -29,8 +29,17 @@
         <activity
 			android:name=".MenuActivity"
 			android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".areas.MenuAreas"></activity>
-        <activity android:name=".Respuesta"></activity>
+        <activity
+			android:name=".areas.MenuAreas"
+			android:theme="@style/AppTheme.NoActionBar"></activity>
+		<activity
+			android:name=".tics.MenuTics"
+			android:theme="@style/AppTheme.NoActionBar"></activity>
+		<activity
+			android:name=".capacitacion.MenuCapacitacion"
+			android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".areas.RespuestaAreas"></activity>
+        <activity android:name=".capacitacion.RespuestaCapacitacion"></activity>
     </application>
 
 </manifest>

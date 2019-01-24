@@ -34,4 +34,13 @@ class Servicios_modelo extends CI_Model {
 		return $resp;
 	}
 
+	public function insertarVocacionAreas($data){
+        $this->db->insert("areas", $data);
+    }
+
+
+    public function insertarVocacionCapacitacion($data){
+        $this->db->insert("capacitacion", $data);
+    }
+
 }

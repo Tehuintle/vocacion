@@ -1,5 +1,8 @@
 package orientacion.com.capacitacion;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -7,31 +10,60 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.shashank.sony.fancytoastlib.FancyToast;
+
+import orientacion.com.ConectarIP;
+import orientacion.com.MenuActivity;
 import orientacion.com.R;
+import orientacion.com.api.APIClient;
+import orientacion.com.api.APIInterface;
+import orientacion.com.api.response.ResponseBase;
+import orientacion.com.areas.RespuestaAreas;
 import orientacion.com.basedatos.DBHelper;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static orientacion.com.areas.RetornarValores.getSumarArea1;
+import static orientacion.com.areas.RetornarValores.getSumarArea2;
+import static orientacion.com.areas.RetornarValores.getSumarArea3;
+import static orientacion.com.areas.RetornarValores.getSumarArea4;
+import static orientacion.com.areas.RetornarValores.getSumarCapacitacion1;
+import static orientacion.com.areas.RetornarValores.getSumarCapacitacion2;
+import static orientacion.com.areas.RetornarValores.getSumarCapacitacion3;
+import static orientacion.com.areas.RetornarValores.getSumarCapacitacion4;
 
 public class RespuestaCapacitacion extends AppCompatActivity {
 
-    private TextView txtResultado, txtUsuario;
-    private String respuestas="", nombre="";
+	private RadioGroup radioGroup;
+	private RadioButton vocacionUno, vocacionDos, vocacionTres;
 
-    int p1Final = 0;
-    int p2Final = 0;
-    int p3Final = 0;
-    int p4Final = 0;
+    private TextView txtResultado, txtUsuario;
+	private String respuestas="", nombre="", posicionVocacion1 ="", posicionVocacion2="", posicionVocacion3="";
+	private int INF, COST, COC, BE;
+	private int primerNumero, segundoNumero, tercerNumero;
+	private int posicion1, posicion2, posicion3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.respuesta);
 
+		radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
+		vocacionUno = (RadioButton) findViewById(R.id.vocacionUno);
+		vocacionDos = (RadioButton) findViewById(R.id.vocacionDos);
+		vocacionTres = (RadioButton) findViewById(R.id.vocacionTres);
+
         txtResultado = (TextView)findViewById(R.id.tvResultado);
         txtUsuario = (TextView)findViewById(R.id.usuario);
         Bundle bundle = getIntent().getExtras();
         nombre = bundle.getString("nombre");
-        txtUsuario.setText(nombre+" TU VOCACION ES:");
+        //txtUsuario.setText(nombre+" TU VOCACION ES:");
 
 
         DBHelper admin = new DBHelper(this,null,null,1);
@@ -49,168 +81,183 @@ public class RespuestaCapacitacion extends AppCompatActivity {
 
         /* AQUI LOS SUMAMOS LOS PUNTOS */
         String total = respuestas;
-        int pInUno = Integer.parseInt(String.valueOf(total.charAt(0))), pInDos = Integer.parseInt(String.valueOf(total.charAt(4))), pInTres = Integer.parseInt(String.valueOf(total.charAt(8))), pInCuatro = Integer.parseInt(String.valueOf(total.charAt(12)));
-        p1Final =  pInUno + pInDos + pInTres + pInCuatro ;
-        Log.i("RESULTADO", "RESULTADO P1: "+  p1Final );
-        Log.i("RESULTADO", "POSICION 1: "+  total.charAt(0) );
-        Log.i("RESULTADO", "POSICION 2: "+  total.charAt(4) );
-        Log.i("RESULTADO", "POSICION 3: "+  total.charAt(8) );
-        Log.i("RESULTADO", "POSICION 4: "+  total.charAt(12) );
-        Log.i("RESULTADO", "________________________________" );
 
-        int pCosUno = Integer.parseInt(String.valueOf(total.charAt(1))), pCosDos = Integer.parseInt(String.valueOf(total.charAt(5))), pCosTres = Integer.parseInt(String.valueOf(total.charAt(9))), pCosCuatro = Integer.parseInt(String.valueOf(total.charAt(13)));
-        p2Final = pCosUno + pCosDos + pCosTres + pCosCuatro ;
-        Log.i("RESULTADO", "RESULTADO P2: "+  p2Final );
-        Log.i("RESULTADO", "POSICION 1: "+ total.charAt(1) );
-        Log.i("RESULTADO", "POSICION 2: "+ total.charAt(5) );
-        Log.i("RESULTADO", "POSICION 3: "+ total.charAt(9) );
-        Log.i("RESULTADO", "POSICION 4: "+ total.charAt(13) );
-        Log.i("RESULTADO", "________________________________" );
+		INF = getSumarCapacitacion1(total); COST = getSumarCapacitacion2(total); COC = getSumarCapacitacion3(total); BE = getSumarCapacitacion4(total);
+		int[] listaNumeros = {INF, COST, COC, BE};
+		//OBTENEMOS LOS PRIMEROS 3 NUMEROS MAYORES
+		buscarNumerosMayores(listaNumeros);
 
-        int pCpUno = Integer.parseInt(String.valueOf( total.charAt(2))), pCpDos = Integer.parseInt(String.valueOf( total.charAt(6))), pCpTres =  Integer.parseInt(String.valueOf(total.charAt(10))), pCpCuatro =  Integer.parseInt(String.valueOf(total.charAt(14)));
-        p3Final = pCpUno + pCpDos + pCpTres + pCpCuatro ;
-        Log.i("RESULTADO", "RESULTADO P3: "+  p3Final );
-        Log.i("RESULTADO", "POSICION 1: "+ total.charAt(2) );
-        Log.i("RESULTADO", "POSICION 2: "+ total.charAt(6) );
-        Log.i("RESULTADO", "POSICION 3: "+ total.charAt(10) );
-        Log.i("RESULTADO", "POSICION 4: "+ total.charAt(14) );
-        Log.i("RESULTADO", "________________________________" );
+		//Despues pintar los 3 resultados
+		seleccionar3Resultados();
+	}
 
-        int pCUno = Integer.parseInt(String.valueOf(total.charAt(3))), pCDos = Integer.parseInt(String.valueOf(total.charAt(7))), pCTres = Integer.parseInt(String.valueOf(total.charAt(11))), pCCuatro = Integer.parseInt(String.valueOf(total.charAt(15)));
-        p4Final = pCUno + pCDos + pCTres + pCCuatro ;
-        Log.i("RESULTADO", "RESULTADO P4: "+  p4Final );
-        Log.i("RESULTADO", "POSICION 1: "+ total.charAt(3) );
-        Log.i("RESULTADO", "POSICION 2: "+ total.charAt(7) );
-        Log.i("RESULTADO", "POSICION 3: "+ total.charAt(11) );
-        Log.i("RESULTADO", "POSICION 4: "+ total.charAt(15) );
+	/*
+	* RESPUESTA: Capacitacion1: 27
+01-24 01:40:23.806 6064-6064/orientacion.com D/RESPUESTA: Capacitacion2: 19
+01-24 01:40:23.807 6064-6064/orientacion.com D/RESPUESTA: Capacitacion3: 18
+01-24 01:40:23.807 6064-6064/orientacion.com D/RESPUESTA: Capacitacion4: 10
+*/
+	public void buscarNumerosMayores(int[] listaNumeros) {
+		for (int x = 1; x < listaNumeros.length; x++) {
+			if (listaNumeros[x] > primerNumero) {
+				primerNumero = listaNumeros[x];
+				posicion1 = x;
+			}
+		}
+		Log.d("RESULTADO", "Posicion1: " + posicion1 + "    Es mayor1: " + primerNumero);
+		buscarNumero2(listaNumeros, primerNumero);
+	}
 
-        /* Tabla de ejemplos
-        * 4 - 3 - 2 - 1
-          0 - 4 - 3 - 2
-          1 - 0 - 4 - 3
-          2 - 1 - 0 - 4
-          _____________
-   Total: 7  8   9   10
-        */
+	private void buscarNumero2(int[] listaNumeros, int primerNumero) {
+		for (int x = 1; x < listaNumeros.length; x++) {
+			if (listaNumeros[x] > segundoNumero) {
+				if (listaNumeros[x] != primerNumero) {
+					segundoNumero = listaNumeros[x];
+					posicion2 = x;
+				}
+			}
+		}
+		//segundoNumero = iNumeroMayor;
+		Log.d("RESULTADO", "Posicion2: " + posicion2 + "  Es mayor2: " + segundoNumero);
+		buscarNumero3(listaNumeros, primerNumero, segundoNumero);
+	}
 
+	private void buscarNumero3(int[] listaNumeros, int primerNumero, int segundoNumero) {
+		for (int x = 1; x < listaNumeros.length; x++) {
+			if (listaNumeros[x] > tercerNumero) {
+				if (listaNumeros[x] != primerNumero) {
+					if (listaNumeros[x] != segundoNumero) {
+						tercerNumero = listaNumeros[x];
+						posicion3 = x;
+					}
+				}
+			}
+		}
+		Log.d("RESULTADO", "Posicion3: " + posicion3 + " Es mayor3: " + tercerNumero);
+		validacionCapacitaciones();
+	}
 
-        /* Tabla de ejemplos AREAS
-          4 - 3 - 2 - 1 - 3
-          0 - 4 - 3 - 2 - 4
-          1 - 0 - 4 - 3 - 1
-          2 - 1 - 0 - 4 - 2
-          0 - 1 - 1 - 0 - 0
-          0 - 2 - 0 - 4 - 3
-          2 - 1 - 2 - 2 - 1
-          3 - 0 - 0 - 4 - 1
-          2 - 1 - 4 - 0 - 0
-          4 - 1 - 0 - 4 - 0
-          __________________
-   Total: 27  18  9   10  12
-
-        */
-
-
-  /* Tabla de ejemplos CAPACITACION
-        * 4 - 3 - 2 - 1
-          0 - 4 - 3 - 2
-          1 - 0 - 4 - 3
-          2 - 1 - 0 - 4
-          4 - 1 - 0 - 1
-          2 - 2 - 3 - 4
-          1 - 1 - 0 - 0
-          2 - 1 - 2 - 4
-          ______________
-   Total: 12  18   9   10
+	private void validacionCapacitaciones() {
+		// 0.-INF, 1.-COST, 2.-COC, 3.-BE;
+		if (posicion1 == 0 ){
+			vocacionUno.setText("Informática");
+			posicionVocacion1 = "Informática";
+		}else if (posicion1 == 1 ){
+			vocacionUno.setText("Costura");
+			posicionVocacion1 = "Costura";
+		}else if (posicion1 == 2 ){
+			vocacionUno.setText("Cocina");
+			posicionVocacion1 = "Cocina";
+		}else if (posicion1 == 3 ){
+			vocacionUno.setText("Belleza (Corte y Peínado)");
+			posicionVocacion1 = "Belleza (Corte y Peínado)";
+		}
 
 
-        */
+		if (posicion2 == 0 ){
+			vocacionDos.setText("Informática");
+			posicionVocacion2 = "Informática";
+		}else if (posicion2 == 1 ){
+			vocacionDos.setText("Costura");
+			posicionVocacion2 = "Costura";
+		}else if (posicion2 == 2 ){
+			vocacionDos.setText("Cocina");
+			posicionVocacion2 = "Cocina";
+		}else if (posicion2 == 3 ){
+			vocacionDos.setText("Belleza (Corte y Peínado)");
+			posicionVocacion2 = "Belleza (Corte y Peínado)";
+		}
+
+
+		if (posicion3 == 0 ){
+			vocacionTres.setText("Informática");
+			posicionVocacion3 = "Informática";
+		}else if (posicion3 == 1 ){
+			vocacionTres.setText("Costura");
+			posicionVocacion3 = "Costura";
+		}else if (posicion3 == 2 ){
+			vocacionTres.setText("Cocina");
+			posicionVocacion3 = "Cocina";
+		}else if (posicion3 == 3 ){
+			vocacionTres.setText("Belleza (Corte y Peínado)");
+			posicionVocacion3 = "Belleza (Corte y Peínado)";
+		}
+	}
+
+
+	private boolean checkSelectVocation = false;
+	private void seleccionar3Resultados() {
+		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				if(vocacionUno.isChecked()){
+					posicionVocacion1 = vocacionUno.getText().toString();
+					Log.i("RESULTADO", "resultado: "+ posicionVocacion1);
+					checkSelectVocation = true;
+				}else{
+					if(vocacionDos.isChecked()){
+						posicionVocacion2 = vocacionDos.getText().toString();
+						Log.i("RESULTADO", "resultado: "+ posicionVocacion2);
+						checkSelectVocation = true;
+					}else{
+						if(vocacionTres.isChecked()){
+							posicionVocacion3 = vocacionTres.getText().toString();
+							Log.i("RESULTADO", "resultado: "+ posicionVocacion3);
+							checkSelectVocation = true;
+						}
+					}
+				}
+			}
+		});
+	}
+
+
+	public void viewGuardar(View v){
+		if (checkSelectVocation == true){
+			initService();
+			//finish();
+		}else {
+			FancyToast.makeText(RespuestaCapacitacion.this, "Favor seleccionar una vocación", FancyToast.LENGTH_LONG, FancyToast.WARNING, false).show();
+		}
+	}
+
+
+	private APIInterface apiInterface;
+	private void initService() {
+		SharedPreferences preferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+		String coneccionIP = preferences.getString("IP", "");
+		String curp = preferences.getString("CURP", "");
+		Log.i("RESPUESTA: ", ""+coneccionIP+ "  curp: "+curp);
+		apiInterface = APIClient.getClient(coneccionIP).create(APIInterface.class);
+		Call<ResponseBase> call3 = apiInterface.registrarCapacitacion(curp, posicionVocacion1, posicionVocacion2, posicionVocacion3);
+		call3.enqueue(new Callback<ResponseBase>() {
+			@Override
+			public void onResponse(Call<ResponseBase> call, Response<ResponseBase> response) {
+				if (response.body().estatus){
+					Log.i("RESPUESTA: ", ""+response.body().mensaje);
+					pasarSiguiente(response);
+				}
+			}
+			@Override
+			public void onFailure(Call<ResponseBase> call, Throwable t) {
+				Log.e("ERROR",t.getMessage());
+				//dialog.dismiss();
+				FancyToast.makeText(RespuestaCapacitacion.this,"Verificar dirección IP, no se pudo conectar",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+				//Toast.makeText(ConectarIP.this, "IP incorrecto", Toast.LENGTH_LONG).show();
+				call.cancel();
+			}
+		});
+	}
+
+	private void pasarSiguiente(Response<ResponseBase> response) {
+		FancyToast.makeText(RespuestaCapacitacion.this,""+response.body().mensaje, FancyToast.LENGTH_LONG, FancyToast.SUCCESS,false).show();
+		Intent intent = new Intent(RespuestaCapacitacion.this, MenuActivity.class);
+		startActivityForResult(intent, 1);
+		this.finish();
+	}
 
 
 
-        /* Aqui se valida para poder sacar los resultados */
-        // POSICION NUMERO UNO  =====> INFORMÁTICA
-        if (p1Final > p2Final){
-            if (p1Final > p3Final){
-                if (p1Final > p4Final){
-                    txtResultado.setText(" INFORMÁTICA ");
-                }else {
-                    txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                }
-            }else if (p3Final > p4Final){
-                txtResultado.setText(" CORTE Y PEINADO ");
-            }else {
-                txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-            }
-        }else
-            // POSICION NUMERO DOS  =====> COSTURA
-            if (p2Final > p1Final){
-               if (p2Final > p3Final){
-                if (p2Final > p4Final){
-                    txtResultado.setText(" COSTURA ");
-                }else {
-                    txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                }
-            }if (p3Final > p4Final){
-                    txtResultado.setText(" CORTE Y PEINADO ");
-                }if (p4Final > p1Final){
-                    if (p4Final > p2Final){
-                        if (p4Final > p3Final){
-                            txtResultado.setText(" COCINA ");
-                        }
-                    }else {
-                        txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                    }
-                } else {
-                    txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                }
-        }else
-            // POSICION NUMERO TRES  =====> CORTE Y PEINADO
-            if (p3Final > p1Final){
-               if (p3Final > p2Final){
-                if (p3Final > p4Final){
-                    txtResultado.setText(" CORTE Y PEINADO ");
-                }else {
-                    txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                }
-            }if (p2Final > p3Final){
-                    if (p2Final > p4Final){
-                        txtResultado.setText(" COSTURA ");
-                    }else {
-                        txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                    }
-                }if (p3Final > p4Final){
-                    txtResultado.setText(" CORTE Y PEINADO ");
-                }else {
-                    txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                }
-        }else
-            // POSICION NUMERO CUATRO  =====> COCINA
-            if (p4Final > p1Final){
-               if (p4Final > p2Final){
-                if (p4Final > p3Final){
-                    txtResultado.setText(" COCINA ");
-                }else {
-                    txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                }
-            }if (p2Final > p3Final){
-                    if (p2Final > p4Final){
-                        txtResultado.setText(" COSTURA ");
-                    }else {
-                        txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                    }
-                }else if (p3Final > p4Final){
-                    txtResultado.setText(" CORTE Y PEINADO ");
-                }else {
-                    txtResultado.setText("EMPRENDEDOR: Pero necesita fijar un objetivo en su vida");
-                }
-        }
-
-
-    }
-
-
-    @Override
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.salir, menu);

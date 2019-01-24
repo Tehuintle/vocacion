@@ -61,4 +61,38 @@ class Servicios_vocacion extends API_Controller{
         echo json_encode ($response);
     }
 
+    public function guardarVocacionAreas(){
+        $response      = null;
+        $data['Fecha_Registro']    = date("Y-m-d H:i:s");
+        $data['Curp']              = $this->input->post("Curp");
+        $data['Vocacion1']         = $this->input->post("Vocacion1");
+        $data['Vocacion2']         = $this->input->post("Vocacion2");
+        $data['Vocacion3']         = $this->input->post("Vocacion3");
+
+        $this->servicios_modelo->insertarVocacionAreas($data);
+
+         $response = array('Estatus' => true, 
+                                    'Mensaje' => "Datos guardados correctamente!");
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode ($response);
+
+    }
+
+
+    public function guardarVocacionCapacitacion(){
+        $response      = null;
+        $data['Fecha_Registro']    = date("Y-m-d H:i:s");
+        $data['Curp']              = $this->input->post("Curp");
+        $data['Capacitacion1']     = $this->input->post("Capacitacion1");
+        $data['Capacitacion2']     = $this->input->post("Capacitacion2");
+        $data['Capacitacion3']     = $this->input->post("Capacitacion3");
+
+        $this->servicios_modelo->insertarVocacionCapacitacion($data);
+
+         $response = array('Estatus' => true, 
+                                    'Mensaje' => "Datos guardados correctamente!");
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode ($response);
+    }
+
 }

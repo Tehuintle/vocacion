@@ -91,12 +91,12 @@ public class MenuAreas extends AppCompatActivity {
                     contadorRegistroIteracionDos ++;
                     convertirTextoResultValidacion = "";
                 }if (convertirTextoResultValidacion.equals("")) {
-                    if (contadorRegistroIteracionDos <= 16 ){
+                    if (contadorRegistroIteracionDos <= 50 ){
                         Toast.makeText(MenuAreas.this, "Debes seleccionar una respuesta", Toast.LENGTH_LONG).show();
                     }
                 }
                 /* validamos si ya termino las preguntas para pasar al siguiente venta al resultado final */
-                if (indexOfTarget == 17 ){
+                if (indexOfTarget == 51 ){
                     Log.d("RESULTADO", "TOTAL: "+arrayListPreguntas.size());
 
                     Intent intent = new Intent(MenuAreas.this, RespuestaAreas.class);
@@ -120,4 +120,5 @@ public class MenuAreas extends AppCompatActivity {
         convertirTextoResult = String.valueOf(resultado);
         convertirTextoResultValidacion = String.valueOf(resultado);
     }
+
 }

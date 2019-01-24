@@ -90,12 +90,12 @@ public class MenuCapacitacion extends AppCompatActivity {
                     contadorRegistroIteracionDos ++;
                     convertirTextoResultValidacion = "";
                 }if (convertirTextoResultValidacion.equals("")) {
-                    if (contadorRegistroIteracionDos <= 16 ){
+                    if (contadorRegistroIteracionDos <= 32 ){
                         Toast.makeText(MenuCapacitacion.this, "Debes seleccionar una respuesta", Toast.LENGTH_LONG).show();
                     }
                 }
                 /* validamos si ya termino las preguntas para pasar al siguiente venta al resultado final */
-                if (indexOfTarget == 17 ){
+                if (indexOfTarget == 33 ){
                     Log.d("RESULTADO", "TOTAL: "+arrayListPreguntas.size());
 
                     Intent intent = new Intent(MenuCapacitacion.this, RespuestaCapacitacion.class);

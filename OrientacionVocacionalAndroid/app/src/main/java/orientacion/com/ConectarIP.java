@@ -2,8 +2,10 @@ package orientacion.com;
 
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,6 +44,12 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_conectar_ip);
 
+		SharedPreferences preferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+		String coneccionIP = preferences.getString("IP", "");
+		String curp = preferences.getString("CURP", "");
+		Log.i("RESPUESTA: ", ""+coneccionIP+ "  curp: "+curp);
+
+
 		networkState = new NetworkState();
 		networkState.addListener(this);
 		this.registerReceiver(networkState, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
@@ -72,7 +80,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 	}
 
 
-	private void conectarIP(String coneccionIP) {
+	private void conectarIP(final String coneccionIP) {
 		apiInterface = APIClient.getClient(coneccionIP).create(APIInterface.class);
 		Call<ResponseBase> call3 = apiInterface.conectarRemoto(coneccionIP);
 		call3.enqueue(new Callback<ResponseBase>() {
@@ -81,6 +89,10 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 				if (response.body().estatus){
 					Log.i("RESPUESTA: ", ""+response.body().mensaje);
 					pasarSiguiente(response);
+					SharedPreferences sharedpreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = sharedpreferences.edit();
+					editor.putString("IP", coneccionIP);
+					editor.commit();
 				}
 			}
 			@Override

@@ -1,6 +1,8 @@
 package orientacion.com;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -37,6 +39,10 @@ public class AccederCurp extends AppCompatActivity {
 				if (!curp.isEmpty()) {
 					Intent intent = new Intent(AccederCurp.this, MenuActivity.class);
 					startActivityForResult(intent, 1);
+					SharedPreferences sharedpreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = sharedpreferences.edit();
+					editor.putString("CURP", curp);
+					editor.commit();
 				}else {
 					FancyToast.makeText(AccederCurp.this, "Favor digite su CURP de 18 carácteres", FancyToast.LENGTH_LONG, FancyToast.WARNING, false).show();
 				}

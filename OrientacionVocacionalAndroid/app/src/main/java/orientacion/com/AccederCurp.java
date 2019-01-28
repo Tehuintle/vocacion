@@ -20,11 +20,15 @@ public class AccederCurp extends AppCompatActivity {
 	private EditText edtCURP;
 	private SpotsDialog dialog;
 	private APIInterface apiInterface;
+	private String coneccionIP="";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_acceder_curp);
+
+		Bundle bundle = getIntent().getExtras();
+		coneccionIP = bundle.getString("key_direccionIP");
 
 		dialog=new SpotsDialog(AccederCurp.this);
 		btnCURP=(Button)findViewById(R.id.btnValidarCurp);
@@ -38,11 +42,9 @@ public class AccederCurp extends AppCompatActivity {
 				validarCurp(curp);
 				if (!curp.isEmpty()) {
 					Intent intent = new Intent(AccederCurp.this, MenuActivity.class);
+					intent.putExtra("key_direccionIP", coneccionIP);
+					intent.putExtra("key_Curp", curp);
 					startActivityForResult(intent, 1);
-					SharedPreferences sharedpreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-					SharedPreferences.Editor editor = sharedpreferences.edit();
-					editor.putString("CURP", curp);
-					editor.commit();
 				}else {
 					FancyToast.makeText(AccederCurp.this, "Favor digite su CURP de 18 carácteres", FancyToast.LENGTH_LONG, FancyToast.WARNING, false).show();
 				}

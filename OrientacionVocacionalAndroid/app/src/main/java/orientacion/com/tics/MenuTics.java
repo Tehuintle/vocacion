@@ -30,7 +30,7 @@ public class MenuTics extends AppCompatActivity {
     private DBHelper admin;
     private SQLiteDatabase bdatos;
     private ContentValues values;
-    private String convertirTextoResultValidacion = "2", convertirTextoResult = "", nombre="";
+    private String convertirTextoResultValidacion = "2", convertirTextoResult = "", coneccionIP="", curp="";
 
 
     ArrayList<DatosAuxiliar> arrayListPreguntas = new ArrayList<DatosAuxiliar>();
@@ -42,7 +42,8 @@ public class MenuTics extends AppCompatActivity {
         mSwipeView = (SwipePlaceHolderView)findViewById(R.id.swipeView);
 
         Bundle bundle = getIntent().getExtras();
-        nombre = bundle.getString("nombre");
+        coneccionIP = bundle.getString("key_direccionIP");
+        curp = bundle.getString("key_Curp");
 
 		TextView tvTitle = (TextView)findViewById(R.id.tvTitle);
 		tvTitle.setText("Orientacion Vocacional");

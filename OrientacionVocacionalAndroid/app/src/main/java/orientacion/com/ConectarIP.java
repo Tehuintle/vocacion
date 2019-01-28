@@ -88,11 +88,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 			public void onResponse(Call<ResponseBase> call, Response<ResponseBase> response) {
 				if (response.body().estatus){
 					Log.i("RESPUESTA: ", ""+response.body().mensaje);
-					pasarSiguiente(response);
-					SharedPreferences sharedpreferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-					SharedPreferences.Editor editor = sharedpreferences.edit();
-					editor.putString("IP", coneccionIP);
-					editor.commit();
+					pasarSiguiente(response, coneccionIP);
 				}
 			}
 			@Override
@@ -106,7 +102,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 		});
 	}
 
-	private void pasarSiguiente(final Response<ResponseBase> response) {
+	private void pasarSiguiente(final Response<ResponseBase> response, final String coneccionIP) {
 		this.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
@@ -117,8 +113,8 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 					public void run() {
 						dialog.dismiss();
 						FancyToast.makeText(ConectarIP.this,""+response.body().mensaje, FancyToast.LENGTH_LONG, FancyToast.SUCCESS,false).show();
-						//Toast.makeText(ConectarIP.this, ""+response.body().mensaje, Toast.LENGTH_LONG).show();
 						Intent intent = new Intent(ConectarIP.this, AccederCurp.class);
+						intent.putExtra("key_direccionIP", coneccionIP);
 						startActivityForResult(intent,1);
 					}
 				}, millisDelayTime);

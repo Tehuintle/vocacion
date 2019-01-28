@@ -122,7 +122,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/general_top"
 			android:background="@color/colorPrimary"
-			android:text="TISC´S"
+			android:text="TIC´S"
 			android:textAllCaps="false"
 			android:textColor="@color/colorWhite"
 			android:textSize="19dp"

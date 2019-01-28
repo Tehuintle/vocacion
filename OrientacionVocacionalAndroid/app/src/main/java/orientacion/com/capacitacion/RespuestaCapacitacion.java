@@ -44,7 +44,8 @@ public class RespuestaCapacitacion extends AppCompatActivity {
 	private RadioButton vocacionUno, vocacionDos, vocacionTres;
 
     private TextView txtResultado, txtUsuario;
-	private String respuestas="", nombre="", posicionVocacion1 ="", posicionVocacion2="", posicionVocacion3="";
+	private String respuestas="", posicionVocacion1 ="", posicionVocacion2="", posicionVocacion3="",
+			coneccionIP="", curp="";
 	private int INF, COST, COC, BE;
 	private int primerNumero, segundoNumero, tercerNumero;
 	private int posicion1, posicion2, posicion3;
@@ -62,8 +63,8 @@ public class RespuestaCapacitacion extends AppCompatActivity {
         txtResultado = (TextView)findViewById(R.id.tvResultado);
         txtUsuario = (TextView)findViewById(R.id.usuario);
         Bundle bundle = getIntent().getExtras();
-        nombre = bundle.getString("nombre");
-        //txtUsuario.setText(nombre+" TU VOCACION ES:");
+		coneccionIP = bundle.getString("key_direccionIP");
+		curp = bundle.getString("key_Curp");
 
 
         DBHelper admin = new DBHelper(this,null,null,1);
@@ -223,9 +224,6 @@ public class RespuestaCapacitacion extends AppCompatActivity {
 
 	private APIInterface apiInterface;
 	private void initService() {
-		SharedPreferences preferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-		String coneccionIP = preferences.getString("IP", "");
-		String curp = preferences.getString("CURP", "");
 		Log.i("RESPUESTA: ", ""+coneccionIP+ "  curp: "+curp);
 		apiInterface = APIClient.getClient(coneccionIP).create(APIInterface.class);
 		Call<ResponseBase> call3 = apiInterface.registrarCapacitacion(curp, posicionVocacion1, posicionVocacion2, posicionVocacion3);

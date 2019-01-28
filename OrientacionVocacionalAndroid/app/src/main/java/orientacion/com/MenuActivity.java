@@ -11,18 +11,23 @@ import orientacion.com.tics.MenuTics;
 
 public class MenuActivity extends AppCompatActivity {
 
+	private String coneccionIP="", curp="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+		Bundle bundle = getIntent().getExtras();
+		coneccionIP = bundle.getString("key_direccionIP");
+		curp = bundle.getString("key_Curp");
+
 		findViewById(R.id.btnAreas).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuActivity.this, MenuAreas.class);
-				Bundle bundle = new Bundle();
-				bundle.putString("nombre", "USUARIO");
-				intent.putExtras(bundle);
+				intent.putExtra("key_direccionIP", coneccionIP);
+				intent.putExtra("key_Curp", curp);
 				startActivityForResult(intent, 1);
 			}
 		});
@@ -31,9 +36,8 @@ public class MenuActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuActivity.this, MenuTics.class);
-				Bundle bundle = new Bundle();
-				bundle.putString("nombre", "USUARIO");
-				intent.putExtras(bundle);
+				intent.putExtra("key_direccionIP", coneccionIP);
+				intent.putExtra("key_Curp", curp);
 				startActivityForResult(intent, 1);
 			}
 		});
@@ -42,9 +46,8 @@ public class MenuActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuActivity.this, MenuCapacitacion.class);
-				Bundle bundle = new Bundle();
-				bundle.putString("nombre", "USUARIO");
-				intent.putExtras(bundle);
+				intent.putExtra("key_direccionIP", coneccionIP);
+				intent.putExtra("key_Curp", curp);
 				startActivityForResult(intent, 1);
 			}
 		});

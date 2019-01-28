@@ -28,7 +28,7 @@ public class MenuCapacitacion extends AppCompatActivity {
     private DBHelper admin;
     private SQLiteDatabase bdatos;
     private ContentValues values;
-    private String convertirTextoResultValidacion = "", convertirTextoResult = "", nombre="";
+    private String convertirTextoResultValidacion = "", convertirTextoResult = "", coneccionIP="", curp="";
 
     ArrayList<DatosAuxiliar> arrayListPreguntas = new ArrayList<DatosAuxiliar>();
 
@@ -39,7 +39,8 @@ public class MenuCapacitacion extends AppCompatActivity {
         mSwipeView = (SwipePlaceHolderView)findViewById(R.id.swipeView);
 
         Bundle bundle = getIntent().getExtras();
-        nombre = bundle.getString("nombre");
+        coneccionIP = bundle.getString("key_direccionIP");
+        curp = bundle.getString("key_Curp");
 
         //CONFIGURAMOS CARDVIEW PARA LAS PREGUNTAS
         mSwipeView.disableTouchSwipe();
@@ -99,9 +100,8 @@ public class MenuCapacitacion extends AppCompatActivity {
                     Log.d("RESULTADO", "TOTAL: "+arrayListPreguntas.size());
 
                     Intent intent = new Intent(MenuCapacitacion.this, RespuestaCapacitacion.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("nombre", nombre);
-                    intent.putExtras(bundle);
+                    intent.putExtra("key_direccionIP", coneccionIP);
+                    intent.putExtra("key_Curp", curp);
                     startActivityForResult(intent,1);
                     bdatos.close();
                     finish();

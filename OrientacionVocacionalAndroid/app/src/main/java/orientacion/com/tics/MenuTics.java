@@ -87,6 +87,8 @@ public class MenuTics extends AppCompatActivity {
 				indexOfTarget++;
 				if (indexOfTarget == 4 ){
 					Intent intent = new Intent(MenuTics.this, MenuActivity.class);
+					intent.putExtra("key_direccionIP", coneccionIP);
+					intent.putExtra("key_Curp", curp);
 					startActivityForResult(intent,1);
 					finish();
 				}

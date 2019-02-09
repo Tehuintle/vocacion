@@ -44,12 +44,6 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_conectar_ip);
 
-		SharedPreferences preferences = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
-		String coneccionIP = preferences.getString("IP", "");
-		String curp = preferences.getString("CURP", "");
-		Log.i("RESPUESTA: ", ""+coneccionIP+ "  curp: "+curp);
-
-
 		networkState = new NetworkState();
 		networkState.addListener(this);
 		this.registerReceiver(networkState, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
@@ -93,7 +87,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 			}
 			@Override
 			public void onFailure(Call<ResponseBase> call, Throwable t) {
-				Log.e("ERROR",t.getMessage());
+				Log.e("ERROR", "... "+t.getMessage());
 				dialog.dismiss();
 				FancyToast.makeText(ConectarIP.this,"Verificar dirección IP, no se pudo conectar",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
 				//Toast.makeText(ConectarIP.this, "IP incorrecto", Toast.LENGTH_LONG).show();

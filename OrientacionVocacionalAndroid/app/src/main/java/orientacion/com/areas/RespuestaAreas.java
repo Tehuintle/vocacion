@@ -291,7 +291,7 @@ public class RespuestaAreas extends AppCompatActivity {
 			}
 			@Override
 			public void onFailure(Call<ResponseBase> call, Throwable t) {
-				Log.e("ERROR",t.getMessage());
+				Log.e("ERROR", ""+t.getMessage());
 				//dialog.dismiss();
 				FancyToast.makeText(RespuestaAreas.this,"Verificar dirección IP, no se pudo conectar",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
 				//Toast.makeText(ConectarIP.this, "IP incorrecto", Toast.LENGTH_LONG).show();
@@ -303,6 +303,8 @@ public class RespuestaAreas extends AppCompatActivity {
 	private void pasarSiguiente(Response<ResponseBase> response) {
 		FancyToast.makeText(RespuestaAreas.this,""+response.body().mensaje, FancyToast.LENGTH_LONG, FancyToast.SUCCESS,false).show();
 		Intent intent = new Intent(RespuestaAreas.this, MenuActivity.class);
+		intent.putExtra("key_direccionIP", coneccionIP);
+		intent.putExtra("key_Curp", curp);
 		startActivityForResult(intent, 1);
 		this.finish();
 	}

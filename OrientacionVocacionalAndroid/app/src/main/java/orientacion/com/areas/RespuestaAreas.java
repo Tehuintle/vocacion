@@ -1,17 +1,14 @@
 package orientacion.com.areas;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.print.PrinterId;
-import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -22,15 +19,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import orientacion.com.AccederCurp;
-import orientacion.com.ConectarIP;
 import orientacion.com.MenuActivity;
 import orientacion.com.R;
 import orientacion.com.api.APIClient;
 import orientacion.com.api.APIInterface;
 import orientacion.com.api.response.ResponseBase;
 import orientacion.com.basedatos.DBHelper;
-import orientacion.com.capacitacion.RespuestaCapacitacion;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,6 +46,7 @@ public class RespuestaAreas extends AppCompatActivity {
 
     private TextView txtUsuario;
     private String respuestas="", posicionVocacion1 ="", posicionVocacion2="", posicionVocacion3="", coneccionIP="", curp="";
+    private static String resultVocacion1="", resultVocacion2="", resultVocacion3="";
     private int SS, EP, V, AP, MS, OG, CT, CI, MC, AL;
 	private int primerNumero, segundoNumero, tercerNumero;
 	private int posicion1, posicion2, posicion3;
@@ -247,16 +242,31 @@ public class RespuestaAreas extends AppCompatActivity {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				if(vocacionUno.isChecked()){
 					posicionVocacion1 = vocacionUno.getText().toString();
+					posicionVocacion1 = "1"+posicionVocacion1;
+					posicionVocacion2 = vocacionDos.getText().toString();
+					posicionVocacion2 = "2"+posicionVocacion2;
+					posicionVocacion3 = vocacionTres.getText().toString();
+					posicionVocacion3 = "3"+posicionVocacion3;
 					Log.i("RESULTADO", "resultado: "+ posicionVocacion1);
 					checkSelectVocation = true;
 				}else{
 					if(vocacionDos.isChecked()){
 						posicionVocacion2 = vocacionDos.getText().toString();
+						posicionVocacion2 = "1"+posicionVocacion2;
+						posicionVocacion1 = vocacionUno.getText().toString();
+						posicionVocacion1 = "2"+posicionVocacion1;
+						posicionVocacion3 = vocacionTres.getText().toString();
+						posicionVocacion3 = "3"+posicionVocacion3;
 						Log.i("RESULTADO", "resultado: "+ posicionVocacion2);
 						checkSelectVocation = true;
 					}else{
 						if(vocacionTres.isChecked()){
 							posicionVocacion3 = vocacionTres.getText().toString();
+							posicionVocacion3 = "1"+posicionVocacion3;
+							posicionVocacion1 = vocacionUno.getText().toString();
+							posicionVocacion1 = "2"+posicionVocacion1;
+							posicionVocacion2 = vocacionDos.getText().toString();
+							posicionVocacion2 = "3"+posicionVocacion2;
 							Log.i("RESULTADO", "resultado: "+ posicionVocacion3);
 							checkSelectVocation = true;
 						}
@@ -269,7 +279,7 @@ public class RespuestaAreas extends AppCompatActivity {
 
 	public void viewGuardar(View v){
 		if (checkSelectVocation == true){
-			initService();
+			ordenarLista(posicionVocacion1, posicionVocacion2, posicionVocacion3);
 			//finish();
 		}else {
 			FancyToast.makeText(RespuestaAreas.this, "Favor seleccionar una vocación", FancyToast.LENGTH_LONG, FancyToast.WARNING, false).show();
@@ -280,7 +290,7 @@ public class RespuestaAreas extends AppCompatActivity {
 	private void initService() {
 		Log.i("RESPUESTA: ", ""+coneccionIP+ "  curp: "+curp);
 		apiInterface = APIClient.getClient(coneccionIP).create(APIInterface.class);
-		Call<ResponseBase> call3 = apiInterface.registrarAreas(curp, posicionVocacion1, posicionVocacion2, posicionVocacion3);
+		Call<ResponseBase> call3 = apiInterface.registrarAreas(curp, resultVocacion1, resultVocacion2, resultVocacion3);
 		call3.enqueue(new Callback<ResponseBase>() {
 			@Override
 			public void onResponse(Call<ResponseBase> call, Response<ResponseBase> response) {
@@ -310,27 +320,42 @@ public class RespuestaAreas extends AppCompatActivity {
 	}
 
 
-	private void ordenarLista() {
+	private void ordenarLista(String vocacion1, String vocacion2, String vocacion3) {
 		List theList = new ArrayList<>();
-		theList.add(posicionVocacion1);
-		theList.add(posicionVocacion2);
-		theList.add(posicionVocacion3);
-		Log.d("ORDENACION", "Lista original: -----");
-		showList(theList);
+		theList.add(vocacion1);
+		theList.add(vocacion2);
+		theList.add(vocacion3);
+		Log.d("RESULTADO", ":::::::: Lista original: -----");
+		//showList(theList);
 		Collections.sort(theList);
-		Log.d("ORDENACION", "Lista ordenada: -----");
+		Log.d("RESULTADO", ":::::::: Lista ordenada: -----");
 		showList(theList);
 	}
 
-	private static void showList(List theList) {
+	private void showList(List theList) {
 		String data = "";
 		int size = theList.size();
 		for(int i=0; i<size; i++){
-			data += String.valueOf(theList.get(i));
+			data += String.valueOf(theList.get(i))+"\n";
+			if (String.valueOf(theList.get(i)).contains("1")){
+				String variable1 = String.valueOf(theList.get(i));
+				resultVocacion1 = variable1.substring(1);
+				Log.d("RESULTADO", "Ordenacion:::::::: contains 1: " +resultVocacion1);
+			}
+			if (String.valueOf(theList.get(i)).contains("2")){
+				String variable2 = String.valueOf(theList.get(i));
+				resultVocacion2 = variable2.substring(1);
+				Log.d("RESULTADO", "Ordenacion:::::::: contains 2: " +resultVocacion2);
+			}
+			if (String.valueOf(theList.get(i)).contains("3")){
+				String variable3 = String.valueOf(theList.get(i));
+				resultVocacion3 = variable3.substring(1);
+				Log.d("RESULTADO", "Ordenacion:::::::: contains 3: " +resultVocacion3);
+			}
 		}
-		Log.d("ORDENACION", "Resultado: " +data);
+		Log.d("RESULTADO", "Ordenacion:::::::: Resultado: " +data);
+		initService();
 	}
-
 
 
 

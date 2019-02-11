@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="orientacion.com">
+	xmlns:tools="http://schemas.android.com/tools"
+	package="orientacion.com">
 
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -34,6 +35,15 @@
 			android:theme="@style/AppTheme.NoActionBar"></activity>
 		<activity
 			android:name=".tics.MenuTics"
+			android:theme="@style/AppTheme.NoActionBar"></activity>
+		<activity
+			android:name=".tics.MenuTerminales"
+			android:theme="@style/AppTheme.NoActionBar"></activity>
+		<activity
+			android:name=".tics.MenuRedes"
+			android:theme="@style/AppTheme.NoActionBar"></activity>
+		<activity
+			android:name=".tics.MenuAlmacenamiento"
 			android:theme="@style/AppTheme.NoActionBar"></activity>
 		<activity
 			android:name=".capacitacion.MenuCapacitacion"

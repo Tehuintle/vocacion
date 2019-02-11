@@ -2,7 +2,7 @@ package orientacion.com.tics;
 
 import android.app.Activity;
 import android.util.Log;
-import android.widget.RadioButton;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -25,36 +25,34 @@ public class CardViewTics {
     private TextView preguntaNameTxt;
     //-------->
     @View(R.id.radioButtonA)
-    private RadioButton radioButtonA;
+    private CheckBox radioButtonA;
 
     @View(R.id.radioButtonB)
-    private RadioButton radioButtonB;
+    private CheckBox radioButtonB;
 
     @View(R.id.radioButtonC)
-    private RadioButton radioButtonC;
+    private CheckBox radioButtonC;
 
     @View(R.id.radioButtonD)
-    private RadioButton radioButtonD;
+    private CheckBox radioButtonD;
 
     @View(R.id.radioButtonE)
-    private RadioButton radioButtonE;
+    private CheckBox radioButtonE;
 
 	@View(R.id.radioButtonF)
-	private RadioButton radioButtonF;
+	private CheckBox radioButtonF;
 
 	@View(R.id.radioButtonH)
-	private RadioButton radioButtonH;
+	private CheckBox radioButtonH;
 
 	@View(R.id.radioButtonI)
-	private RadioButton radioButtonI;
+	private CheckBox radioButtonI;
 
 	@View(R.id.radioButtonJ)
-	private RadioButton radioButtonJ;
+	private CheckBox radioButtonJ;
 
 	@View(R.id.radioButtonK)
-	private RadioButton radioButtonK;
-
-    private int selec = 0;
+	private CheckBox radioButtonK;
 
     private TicsResponse mDatos;
     private Activity activity;
@@ -73,56 +71,139 @@ public class CardViewTics {
         radioButtonA.setText(mDatos.getPregunta1());
         radioButtonB.setText(mDatos.getPregunta2());
 
-        if (!mDatos.getPregunta3().isEmpty()){
+        if (!mDatos.getPregunta3().equals("")){
 			radioButtonC.setVisibility(android.view.View.VISIBLE);
 			radioButtonC.setText(mDatos.getPregunta3());
-		}else
+		}else {
 			radioButtonC.setVisibility(android.view.View.GONE);
+		}
 
-		if (!mDatos.getPregunta4().isEmpty()){
+		if (!mDatos.getPregunta4().equals("")){
 			radioButtonD.setVisibility(android.view.View.VISIBLE);
 			radioButtonD.setText(mDatos.getPregunta4());
-		}else
+		}else {
 			radioButtonD.setVisibility(android.view.View.GONE);
+		}
 
-		if (!mDatos.getPregunta5().isEmpty()){
+		if (!mDatos.getPregunta5().equals("")){
 			radioButtonE.setVisibility(android.view.View.VISIBLE);
 			radioButtonE.setText(mDatos.getPregunta5());
 		}else
 			radioButtonE.setVisibility(android.view.View.GONE);
 
-		if (!mDatos.getPregunta6().isEmpty()){
+		if (!mDatos.getPregunta6().equals("")){
 			radioButtonF.setVisibility(android.view.View.VISIBLE);
 			radioButtonF.setText(mDatos.getPregunta6());
-		}else
+		}else {
 			radioButtonF.setVisibility(android.view.View.GONE);
+		}
 
-		if (!mDatos.getPregunta7().isEmpty()){
+		if (!mDatos.getPregunta7().equals("")){
 			radioButtonH.setVisibility(android.view.View.VISIBLE);
 			radioButtonH.setText(mDatos.getPregunta7());
-		}else
+		}else {
 			radioButtonH.setVisibility(android.view.View.GONE);
+		}
 
-		if (!mDatos.getPregunta8().isEmpty()){
+		if (!mDatos.getPregunta8().equals("")){
 			radioButtonI.setVisibility(android.view.View.VISIBLE);
 			radioButtonI.setText(mDatos.getPregunta8());
-		}else
+		}else {
 			radioButtonI.setVisibility(android.view.View.GONE);
+		}
 
-		if (!mDatos.getPregunta9().isEmpty()){
+		if (!mDatos.getPregunta9().equals("")){
 			radioButtonJ.setVisibility(android.view.View.VISIBLE);
 			radioButtonJ.setText(mDatos.getPregunta9());
-		}else
+		}else {
 			radioButtonJ.setVisibility(android.view.View.GONE);
+		}
 
-		if (!mDatos.getPregunta10().isEmpty()){
+		if (!mDatos.getPregunta10().equals("")){
 			radioButtonK.setVisibility(android.view.View.VISIBLE);
 			radioButtonK.setText(mDatos.getPregunta10());
-		}else
+		}else {
 			radioButtonK.setVisibility(android.view.View.GONE);
+		}
 
 
-    }
+		//Metodos OnClick que enviara un (SI) o (NO)
+		radioButtonB.setOnCheckedChangeListener((buttonView, isChecked) -> {
+				Log.d("RESULTADO", "seleccionado egergergergergerg: ");
+				MenuTics view = (MenuTics) activity;
+				if (isChecked){
+					view.setValorSeleccionado1("SI");
+				}else {
+					view.setValorSeleccionado1("NO");
+				}
+		});
+
+		radioButtonB.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado2("SI");
+			}else {
+				view.setValorSeleccionado2("NO");
+			}
+		});radioButtonC.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado3("SI");
+			}else {
+				view.setValorSeleccionado3("NO");
+			}
+		});radioButtonD.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado4("SI");
+			}else {
+				view.setValorSeleccionado4("NO");
+			}
+		});radioButtonE.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado5("SI");
+			}else {
+				view.setValorSeleccionado5("NO");
+			}
+		});radioButtonF.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado6("SI");
+			}else {
+				view.setValorSeleccionado6("NO");
+			}
+		});radioButtonH.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado7("SI");
+			}else {
+				view.setValorSeleccionado7("NO");
+			}
+		});radioButtonI.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado8("SI");
+			}else {
+				view.setValorSeleccionado8("NO");
+			}
+		});radioButtonJ.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado9("SI");
+			}else {
+				view.setValorSeleccionado9("NO");
+			}
+		});radioButtonK.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			MenuTics view = (MenuTics) activity;
+			if (isChecked){
+				view.setValorSeleccionado10("SI");
+			}else {
+				view.setValorSeleccionado10("NO");
+			}
+		});
+
+	}
 
     @SwipeOut
     private void onSwipedOut(){

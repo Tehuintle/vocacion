@@ -1,10 +1,9 @@
 //PREGUNTAS DE HERRAMIENTAS TICS
-
 [
   {
 	"pregunta":"Selecciona los dispositivos con los que cuenta: ",
 	"pregunta1":"1. ¿Cuenta con una tableta?",
-	"pregunta2":"2. ¿Teléfono casa/ fija?",
+	"pregunta2":"2. ¿Teléfono casa / fija?",
 	"pregunta3":"3. ¿Cuenta con un televisor?",
 	"pregunta4":"4. ¿Cuenta con una computadora?",
 	"pregunta5":"5. ¿Cuenta con Celular?",

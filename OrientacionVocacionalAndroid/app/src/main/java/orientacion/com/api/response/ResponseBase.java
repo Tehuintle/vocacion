@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class ResponseBase {
 
 	@SerializedName("Estatus")
-	public boolean estatus;
+	public boolean estatus = false;
 	@SerializedName("Mensaje")
 	public String mensaje;
 

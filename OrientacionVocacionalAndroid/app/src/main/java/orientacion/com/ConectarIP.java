@@ -2,10 +2,8 @@ package orientacion.com;
 
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -80,9 +78,11 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 		call3.enqueue(new Callback<ResponseBase>() {
 			@Override
 			public void onResponse(Call<ResponseBase> call, Response<ResponseBase> response) {
-				if (response.body().estatus){
-					Log.i("RESPUESTA: ", ""+response.body().mensaje);
+				if (response.body().isEstatus()){
+					Log.i("RESPUESTA: ", ""+response.body().getMensaje());
 					pasarSiguiente(response, coneccionIP);
+				}else {
+					dialog.dismiss();
 				}
 			}
 			@Override
@@ -106,7 +106,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 					@Override
 					public void run() {
 						dialog.dismiss();
-						FancyToast.makeText(ConectarIP.this,""+response.body().mensaje, FancyToast.LENGTH_LONG, FancyToast.SUCCESS,false).show();
+						FancyToast.makeText(ConectarIP.this,""+response.body().getMensaje(), FancyToast.LENGTH_LONG, FancyToast.SUCCESS,false).show();
 						Intent intent = new Intent(ConectarIP.this, AccederCurp.class);
 						intent.putExtra("key_direccionIP", coneccionIP);
 						startActivityForResult(intent,1);

@@ -7,11 +7,11 @@ import android.view.View;
 
 import orientacion.com.areas.MenuAreas;
 import orientacion.com.capacitacion.MenuCapacitacion;
-import orientacion.com.tics.MenuTics;
+import orientacion.com.tics.MenuTerminales;
 
 public class MenuActivity extends AppCompatActivity {
 
-	private String coneccionIP="", curp="";
+	private String coneccionIP="", curp="", idAlumno="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,9 @@ public class MenuActivity extends AppCompatActivity {
 		Bundle bundle = getIntent().getExtras();
 		coneccionIP = bundle.getString("key_direccionIP");
 		curp = bundle.getString("key_Curp");
+		try{
+			idAlumno = bundle.getString("key_IdAlumno", "");
+		}catch (Exception e){}
 
 		findViewById(R.id.btnAreas).setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -32,12 +35,14 @@ public class MenuActivity extends AppCompatActivity {
 			}
 		});
 
+
 		findViewById(R.id.btnTics).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MenuActivity.this, MenuTics.class);
+				Intent intent = new Intent(MenuActivity.this, MenuTerminales.class);
 				intent.putExtra("key_direccionIP", coneccionIP);
 				intent.putExtra("key_Curp", curp);
+				intent.putExtra("key_IdAlumno", idAlumno);
 				startActivityForResult(intent, 1);
 			}
 		});

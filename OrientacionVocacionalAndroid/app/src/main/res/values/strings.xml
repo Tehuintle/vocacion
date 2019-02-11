@@ -9,4 +9,26 @@
 	<string name="tics2">Seleccione los servicios de Redes con los que cuenta:</string>
 	<string name="tics3">Selecciona los dispositivos con los que cuenta:</string>
 
+
+	<string name="pregunta1"> 1. ¿Cuenta con una tableta? </string>
+	<string name="pregunta2"> 2. ¿Teléfono casa / fija? </string>
+	<string name="pregunta3"> 3. ¿Cuenta con un televisor? </string>
+	<string name="pregunta4"> 4. ¿Cuenta con una computadora? </string>
+	<string name="pregunta5"> 5. ¿Cuenta con Celular? </string>
+	<string name="pregunta6"> 6. ¿Cuenta con Tablets? </string>
+	<string name="pregunta7"> 7. ¿Cuenta con un proyector? </string>
+	<string name="pregunta8"> 8. ¿Cuenta con una Grabadora de audio y de video? </string>
+	<string name="pregunta9"> 9. ¿Cuenta con Televisión por internet? </string>
+	<string name="pregunta10">10. ¿Conoce navegadores de Internet? </string>
+
+	<string name="pregunta11"> 11. ¿Cuenta con internet?</string>
+	<string name="pregunta12"> 12. ¿Cuenta con tv cable?</string>
+	<string name="pregunta13"> 13. ¿Cuenta con Internet tv cable?</string>
+	<string name="pregunta14"> 14. ¿Cuenta con redes sociales?</string>
+	<string name="pregunta15"> 15. ¿Cuenta con un correo electrónico?</string>
+	<string name="pregunta16"> 16. ¿Tiene cuentas para acceso a una página de aprendizaje?</string>
+
+	<string name="pregunta17"> 17. ¿Ha utilizado Usb memoria?</string>
+	<string name="pregunta18"> 18. ¿Ha utilizado SD memoria?</string>
+
 </resources>

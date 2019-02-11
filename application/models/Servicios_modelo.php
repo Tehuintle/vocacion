@@ -43,4 +43,19 @@ class Servicios_modelo extends CI_Model {
         $this->db->insert("capacitacion", $data);
     }
 
+
+    public function insertTerminales($data){
+        $this->db->insert("terminales", $data);
+    }
+
+
+    public function insertRedes($data){
+        $this->db->insert("redes", $data);
+    }
+
+
+    public function insertAlmacenamiento($data){
+        $this->db->insert("almacenamiento", $data);
+    }
+
 }

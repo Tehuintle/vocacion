@@ -54,7 +54,10 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //coneccion de servicios..
-$route['api/v1/user/connectionIP'] = 'servicios_vocacion/loginIP';
-$route['api/v1/user/connectionCURP'] = 'servicios_vocacion/loginCURP';
+$route['api/v1/user/conecctionIP'] = 'servicios_vocacion/loginIP';
+$route['api/v1/user/logInCURP'] = 'servicios_vocacion/loginCURP';
 $route['api/v1/user/registrarAreas'] = 'servicios_vocacion/guardarVocacionAreas';
 $route['api/v1/user/registrarCapacitacion'] = 'servicios_vocacion/guardarVocacionCapacitacion';
+$route['api/v1/user/registrarTerminales'] = 'servicios_vocacion/registrarTicsTerminales';
+$route['api/v1/user/registrarRedes'] = 'servicios_vocacion/registrarTicsRedes';
+$route['api/v1/user/registrarAlmacenamiento'] = 'servicios_vocacion/registrarTicsAlmacenamiento';

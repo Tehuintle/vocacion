@@ -96,20 +96,20 @@ public class RespuestaCapacitacion extends AppCompatActivity {
 01-24 01:40:23.807 6064-6064/orientacion.com D/RESPUESTA: Capacitacion4: 10
 */
 	public void buscarNumerosMayores(int[] listaNumeros) {
-		for (int x = 1; x < listaNumeros.length; x++) {
+		for (int x = 0; x < listaNumeros.length; x++) {
 			if (listaNumeros[x] > primerNumero) {
 				primerNumero = listaNumeros[x];
 				posicion1 = x;
 			}
 		}
 		Log.d("RESULTADO", "Posicion1: " + posicion1 + "    Es mayor1: " + primerNumero);
-		buscarNumero2(listaNumeros, primerNumero);
+		buscarNumero2(listaNumeros, posicion1/*primerNumero*/);
 	}
 
-	private void buscarNumero2(int[] listaNumeros, int primerNumero) {
+	private void buscarNumero2(int[] listaNumeros, int posicion1) {
 		for (int x = 1; x < listaNumeros.length; x++) {
 			if (listaNumeros[x] > segundoNumero) {
-				if (listaNumeros[x] != primerNumero) {
+				if (x != posicion1) {
 					segundoNumero = listaNumeros[x];
 					posicion2 = x;
 				}
@@ -117,14 +117,14 @@ public class RespuestaCapacitacion extends AppCompatActivity {
 		}
 		//segundoNumero = iNumeroMayor;
 		Log.d("RESULTADO", "Posicion2: " + posicion2 + "  Es mayor2: " + segundoNumero);
-		buscarNumero3(listaNumeros, primerNumero, segundoNumero);
+		buscarNumero3(listaNumeros, posicion1, posicion2);
 	}
 
 	private void buscarNumero3(int[] listaNumeros, int primerNumero, int segundoNumero) {
 		for (int x = 1; x < listaNumeros.length; x++) {
 			if (listaNumeros[x] > tercerNumero) {
-				if (listaNumeros[x] != primerNumero) {
-					if (listaNumeros[x] != segundoNumero) {
+				if (x != primerNumero) {
+					if (x != segundoNumero) {
 						tercerNumero = listaNumeros[x];
 						posicion3 = x;
 					}

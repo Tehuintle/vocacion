@@ -87,7 +87,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 			}
 			@Override
 			public void onFailure(Call<ResponseBase> call, Throwable t) {
-				Log.e("ERROR", "... "+t.getMessage());
+				Log.e("ERROR", ""+t.getMessage()+"");
 				dialog.dismiss();
 				FancyToast.makeText(ConectarIP.this,"Verificar dirección IP, no se pudo conectar",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
 				//Toast.makeText(ConectarIP.this, "IP incorrecto", Toast.LENGTH_LONG).show();

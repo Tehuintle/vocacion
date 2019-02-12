@@ -74,7 +74,7 @@ public class AccederCurp extends AppCompatActivity {
 			}
 			@Override
 			public void onFailure(Call<ResponseCURP> call, Throwable t) {
-				Log.e("ERROR", "... "+t.getMessage());
+				Log.e("ERROR", ""+t.getMessage()+"");
 				dialog.dismiss();
 				showMessaje("Verificar dirección IP, no se pudo conectar", "error");
 				call.cancel();

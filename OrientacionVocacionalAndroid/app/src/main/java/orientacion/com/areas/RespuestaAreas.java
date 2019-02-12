@@ -30,6 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static orientacion.com.areas.RetornarValores.getSumarArea1;
+import static orientacion.com.areas.RetornarValores.getSumarArea10;
 import static orientacion.com.areas.RetornarValores.getSumarArea2;
 import static orientacion.com.areas.RetornarValores.getSumarArea3;
 import static orientacion.com.areas.RetornarValores.getSumarArea4;
@@ -46,7 +47,7 @@ public class RespuestaAreas extends AppCompatActivity {
 
     private TextView txtUsuario;
     private String respuestas="", posicionVocacion1 ="", posicionVocacion2="", posicionVocacion3="", coneccionIP="", curp="";
-    private static String resultVocacion1="", resultVocacion2="", resultVocacion3="";
+    private String resultVocacion1="", resultVocacion2="", resultVocacion3="";
     private int SS, EP, V, AP, MS, OG, CT, CI, MC, AL;
 	private int primerNumero, segundoNumero, tercerNumero;
 	private int posicion1, posicion2, posicion3;
@@ -85,7 +86,7 @@ public class RespuestaAreas extends AppCompatActivity {
 
 		//OBTENEMOS LA SUMA DE CADA AREA
 		SS = getSumarArea1(total); EP = getSumarArea2(total); V = getSumarArea3(total); AP = getSumarArea4(total); MS = getSumarArea5(total);
-		OG = getSumarArea6(total); CT = getSumarArea7(total); CI = getSumarArea8(total); MC = getSumarArea9(total); AL = getSumarArea9(total);
+		OG = getSumarArea6(total); CT = getSumarArea7(total); CI = getSumarArea8(total); MC = getSumarArea9(total); AL = getSumarArea10(total);
 		int[] listaNumeros = {SS, EP, V, AP, MS, OG, CT, CI, MC, AL};
 
 		//OBTENEMOS LOS PRIMEROS 3 NUMEROS MAYORES
@@ -96,20 +97,21 @@ public class RespuestaAreas extends AppCompatActivity {
     }
 
 	public void buscarNumerosMayores(int[] listaNumeros) {
-		for (int x = 1; x < listaNumeros.length; x++) {
+		for (int x = 0; x < listaNumeros.length; x++) {
 			if (listaNumeros[x] > primerNumero) {
 				primerNumero = listaNumeros[x];
 				posicion1 = x;
 			}
 		}
 		Log.d("RESULTADO", "Posicion1: " + posicion1 + "    Es mayor1: " + primerNumero);
-		buscarNumero2(listaNumeros, primerNumero);
+		buscarNumero2(listaNumeros, posicion1/*primerNumero*/);
 	}
 
-	private void buscarNumero2(int[] listaNumeros, int primerNumero) {
+	private void buscarNumero2(int[] listaNumeros, int posicion1) {
 		for (int x = 1; x < listaNumeros.length; x++) {
 			if (listaNumeros[x] > segundoNumero) {
-				if (listaNumeros[x] != primerNumero) {
+				//if (listaNumeros[x] != primerNumero) {
+				if (x != posicion1) {
 					segundoNumero = listaNumeros[x];
 					posicion2 = x;
 				}
@@ -117,14 +119,14 @@ public class RespuestaAreas extends AppCompatActivity {
 		}
 		//segundoNumero = iNumeroMayor;
 		Log.d("RESULTADO", "Posicion2: " + posicion2 + "  Es mayor2: " + segundoNumero);
-		buscarNumero3(listaNumeros, primerNumero, segundoNumero);
+		buscarNumero3(listaNumeros, posicion1/*primerNumero*/, posicion2/*segundoNumero*/);
 	}
 
 	private void buscarNumero3(int[] listaNumeros, int primerNumero, int segundoNumero) {
 		for (int x = 1; x < listaNumeros.length; x++) {
 			if (listaNumeros[x] > tercerNumero) {
-				if (listaNumeros[x] != primerNumero) {
-					if (listaNumeros[x] != segundoNumero) {
+				if (x != primerNumero) {
+					if (x != segundoNumero) {
 						tercerNumero = listaNumeros[x];
 						posicion3 = x;
 					}
@@ -138,100 +140,100 @@ public class RespuestaAreas extends AppCompatActivity {
 	private void validacionAreas() {
 		// 0.-SS, 1.-EP, 2.-V, 3.-AP, 4.-MS, 5.-OG, .6.-CT, 7.-CI, 8.-MC, 9.-AL;
 		if (posicion1 == 0 ){
-			vocacionUno.setText("Servicio Social / Humanidades");
-			posicionVocacion1 = "Servicio Social / Humanidades";
+			vocacionUno.setText("Humanidades"); //Servicio Social
+			posicionVocacion1 = "Humanidades";
 		}else if (posicion1 == 1 ){
-			vocacionUno.setText("Ejecutivo Persuasivo / Económico Administrativo");
-			posicionVocacion1 = "Ejecutivo Persuasivo / Económico Administrativo";
+			vocacionUno.setText("Económico Administrativo");//Ejecutivo Persuasivo
+			posicionVocacion1 = "Económico Administrativo";
 		}else if (posicion1 == 2 ){
-			vocacionUno.setText("Verbal");
-			posicionVocacion1 = "Verbal";
+			vocacionUno.setText("Humanidades");//Verbal
+			posicionVocacion1 = "Humanidades";
 		}else if (posicion1 == 3 ){
-			vocacionUno.setText("Artistico Plástico / Químico Biológico");
-			posicionVocacion1 = "Artistico Plástico / Químico Biológico";
+			vocacionUno.setText("Químico Biológico"); //Artistico Plástico
+			posicionVocacion1 = "Químico Biológico";
 		}else if (posicion1 == 4 ){
-			vocacionUno.setText("Músical");
-			posicionVocacion1 = "Músical";
+			vocacionUno.setText("Humanidades"); //Músical
+			posicionVocacion1 = "Humanidades";
 		}else if (posicion1 == 5 ){
-			vocacionUno.setText("Organización");
-			posicionVocacion1 = "Organización";
+			vocacionUno.setText("Humanidades"); //Organización
+			posicionVocacion1 = "Humanidades";
 		}else if (posicion1 == 6 ){
-			vocacionUno.setText("Científico / Físico Matemático");
-			posicionVocacion1 = "Científico / Físico Matemático";
+			vocacionUno.setText("Físico Matemático"); //Científico
+			posicionVocacion1 = "Físico Matemático";
 		}else if (posicion1 == 7 ){
-			vocacionUno.setText("Cálculo");
-			posicionVocacion1 = "Cálculo";
+			vocacionUno.setText("Físico Matemático");//Cálculo
+			posicionVocacion1 = "Físico Matemático";
 		}else if (posicion1 == 8 ){
-			vocacionUno.setText("Mecánico Constructivo");
-			posicionVocacion1 = "Mecánico Constructivo";
+			vocacionUno.setText("Físico Matemático");//Mecánico Constructivo
+			posicionVocacion1 = "Físico Matemático";
 		}else if (posicion1 == 9 ){
-			vocacionUno.setText("Trabajo al áire libre");
-			posicionVocacion1 = "Trabajo al áire libre";
+			vocacionUno.setText("Químico Biológico");//Trabajo al áire libre
+			posicionVocacion1 = "Químico Biológico";
 		}
 
 		if (posicion2 == 0 ){
-			vocacionDos.setText("Servicio Social / Humanidades");
-			posicionVocacion2 = "Servicio Social / Humanidades";
+			vocacionDos.setText("Humanidades");
+			posicionVocacion2 = "Humanidades";
 		}else if (posicion2 == 1 ){
-			vocacionDos.setText("Ejecutivo Persuasivo / Económico Administrativo");
-			posicionVocacion2 = "Ejecutivo Persuasivo / Económico Administrativo";
+			vocacionDos.setText("Económico Administrativo");
+			posicionVocacion2 = "Económico Administrativo";
 		}else if (posicion2 == 2 ){
-			vocacionDos.setText("Verbal");
-			posicionVocacion2 = "Verbal";
+			vocacionDos.setText("Humanidades");
+			posicionVocacion2 = "Humanidades";
 		}else if (posicion2 == 3 ){
-			vocacionDos.setText("Artistico Plástico / Químico Biológico");
-			posicionVocacion2 = "Artistico Plástico / Químico Biológico";
+			vocacionDos.setText("Químico Biológico");
+			posicionVocacion2 = "Químico Biológico";
 		}else if (posicion2 == 4 ){
-			vocacionDos.setText("Músical");
-			posicionVocacion2 = "Músical";
+			vocacionDos.setText("Humanidades");//Músical
+			posicionVocacion2 = "Humanidades";
 		}else if (posicion2 == 5 ){
-			vocacionDos.setText("Organización");
-			posicionVocacion2 = "Organización";
+			vocacionDos.setText("Humanidades");//Organización
+			posicionVocacion2 = "Humanidades";
 		}else if (posicion2 == 6 ){
-			vocacionDos.setText("Científico / Físico Matemático");
-			posicionVocacion2 = "Científico / Físico Matemático";
+			vocacionDos.setText("Físico Matemático");
+			posicionVocacion2 = "Físico Matemático";
 		}else if (posicion2 == 7 ){
-			vocacionDos.setText("Cálculo");
-			posicionVocacion2 = "Cálculo";
+			vocacionDos.setText("Físico Matemático");
+			posicionVocacion2 = "Físico Matemático";
 		}else if (posicion2 == 8 ){
-			vocacionDos.setText("Mecánico Constructivo");
-			posicionVocacion2 = "Mecánico Constructivo";
+			vocacionDos.setText("Físico Matemático");
+			posicionVocacion2 = "Físico Matemático";
 		}else if (posicion2 == 9 ){
-			vocacionDos.setText("Trabajo al áire libre");
-			posicionVocacion2 = "Trabajo al áire libre";
+			vocacionDos.setText("Químico Biológico");
+			posicionVocacion2 = "Químico Biológico";
 		}
 
 
 		if (posicion3 == 0 ){
-			vocacionTres.setText("Servicio Social / Humanidades");
-			posicionVocacion3 = "Servicio Social / Humanidades";
+			vocacionTres.setText("Humanidades");
+			posicionVocacion3 = "Humanidades";
 		}else if (posicion3 == 1 ){
-			vocacionTres.setText("Ejecutivo Persuasivo / Económico Administrativo");
-			posicionVocacion3 = "Ejecutivo Persuasivo / Económico Administrativo";
+			vocacionTres.setText("Económico Administrativo");
+			posicionVocacion3 = "Económico Administrativo";
 		}else if (posicion3 == 2 ){
-			vocacionTres.setText("Verbal");
-			posicionVocacion3 = "Verbal";
+			vocacionTres.setText("Humanidades");
+			posicionVocacion3 = "Humanidades";
 		}else if (posicion3 == 3 ){
-			vocacionTres.setText("Artistico Plástico / Químico Biológico");
-			posicionVocacion3 = "Artistico Plástico / Químico Biológico";
+			vocacionTres.setText("Químico Biológico");
+			posicionVocacion3 = "Químico Biológico";
 		}else if (posicion3 == 4 ){
-			vocacionTres.setText("Músical");
-			posicionVocacion3 = "Músical";
+			vocacionTres.setText("Humanidades");
+			posicionVocacion3 = "Humanidades";
 		}else if (posicion3 == 5 ){
-			vocacionTres.setText("Organización");
-			posicionVocacion3 = "Organización";
+			vocacionTres.setText("Humanidades");
+			posicionVocacion3 = "Humanidades";
 		}else if (posicion3 == 6 ){
-			vocacionTres.setText("Científico / Físico Matemático");
-			posicionVocacion3 = "Científico / Físico Matemático";
+			vocacionTres.setText("Físico Matemático");
+			posicionVocacion3 = "Físico Matemático";
 		}else if (posicion3 == 7 ){
-			vocacionTres.setText("Cálculo");
-			posicionVocacion3 = "Cálculo";
+			vocacionTres.setText("Físico Matemático");
+			posicionVocacion3 = "Físico Matemático";
 		}else if (posicion3 == 8 ){
-			vocacionTres.setText("Mecánico Constructivo");
-			posicionVocacion3 = "Mecánico Constructivo";
+			vocacionTres.setText("Físico Matemático");
+			posicionVocacion3 = "Físico Matemático";
 		}else if (posicion3 == 9 ){
-			vocacionTres.setText("Trabajo al áire libre");
-			posicionVocacion3 = "Trabajo al áire libre";
+			vocacionTres.setText("Químico Biológico");
+			posicionVocacion3 = "Químico Biológico";
 		}
 	}
 

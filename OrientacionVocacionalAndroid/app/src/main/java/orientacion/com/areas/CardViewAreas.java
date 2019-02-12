@@ -68,36 +68,29 @@ public class CardViewAreas {
         //Aqui vamos a seleccionar una y la respuesta lo enviamos a la clase MenuAreas.class
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(radioButtonA.isChecked()){
-                    selec = 4;
-                    MenuAreas view = (MenuAreas) activity;
-                    view.setValorSeleccionado(selec);
-                }else{
-                    if(radioButtonB.isChecked()){
-                        selec = 3;
-                        //Lo enviamos al MenuAreas, el valor seleccionado
-                        MenuAreas view = (MenuAreas) activity;
-                        view.setValorSeleccionado(selec);
-                    }else{
-                        if(radioButtonC.isChecked()){
-                            selec = 2;
-                            MenuAreas view = (MenuAreas) activity;
-                            view.setValorSeleccionado(selec);
-                        }else{
-                            if(radioButtonD.isChecked()){
-                                selec = 1;
-                                MenuAreas view = (MenuAreas) activity;
-                                view.setValorSeleccionado(selec);
-                            } else{
-                                if(radioButtonE.isChecked()){
-                                    selec = 0;
-                                    MenuAreas view = (MenuAreas) activity;
-                                    view.setValorSeleccionado(selec);
-                                }
-                            }
-                        }
-                    }
-                }
+				MenuAreas view = (MenuAreas) activity;
+				switch(checkedId){
+					case R.id.radioButtonA:
+						selec = 4;
+						view.setValorSeleccionado(selec);
+						break;
+					case R.id.radioButtonB:
+						selec = 3;
+						view.setValorSeleccionado(selec);
+						break;
+					case R.id.radioButtonC:
+						selec = 2;
+						view.setValorSeleccionado(selec);
+						break;
+					case R.id.radioButtonD:
+						selec = 1;
+						view.setValorSeleccionado(selec);
+						break;
+					case R.id.radioButtonE:
+						selec = 0;
+						view.setValorSeleccionado(selec);
+						break;
+				}
             }
         });
     }
@@ -127,4 +120,5 @@ public class CardViewAreas {
     private void onSwipeOutState(){
         Log.d("RESULTADO", "onSwipeOutState");
     }
+
 }

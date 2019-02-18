@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.shashank.sony.fancytoastlib.FancyToast;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
@@ -31,6 +32,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 
 	private  Button btnConectarIP;
 	private EditText edtIP;
+	TextView version;
 	private SpotsDialog dialog;
 	private APIInterface apiInterface;
 	private NetworkState networkState;
@@ -49,6 +51,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 		dialog=new SpotsDialog(ConectarIP.this);
 		btnConectarIP=(Button)findViewById(R.id.btnConectar);
 		edtIP = (EditText)findViewById(R.id.edtIP);
+		version = (TextView) findViewById(R.id.version);
 
 		btnConectarIP.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -57,7 +60,7 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 				//primero preguntamos si ahy conexion internet
 				if (Hardware.isConnectionEnabled(ConectarIP.this)) {
 					//despues validamos caja texto
-					if (!coneccionIP.isEmpty()) {
+					if (!coneccionIP.equals("")) {
 						dialog.show();
 						dialog.setMessage("Conectando..");
 						conectarIP(coneccionIP);
@@ -69,31 +72,69 @@ public class ConectarIP extends AppCompatActivity implements NetworkState.Networ
 				}
 			}
 		});
+
+		//initChar();
+	}
+
+	private void initChar() {
+		String[] numeros = {".", ".", ".", "."};
+		int contador=0;
+		for (int i=0; i<numeros.length; i++){
+			contador++;
+		}
+		Log.i("RESPUESTA: ","Resultado: "+ contador);
+
 	}
 
 
 	private void conectarIP(final String coneccionIP) {
-		apiInterface = APIClient.getClient(coneccionIP).create(APIInterface.class);
-		Call<ResponseBase> call3 = apiInterface.conectarRemoto(coneccionIP);
-		call3.enqueue(new Callback<ResponseBase>() {
-			@Override
-			public void onResponse(Call<ResponseBase> call, Response<ResponseBase> response) {
-				if (response.body().isEstatus()){
-					Log.i("RESPUESTA: ", ""+response.body().getMensaje());
-					pasarSiguiente(response, coneccionIP);
-				}else {
-					dialog.dismiss();
+		Log.i("RESPUESTA: ", ""+coneccionIP);
+		try {
+			apiInterface = APIClient.getClient(coneccionIP).create(APIInterface.class);
+			Call<ResponseBase> call3 = apiInterface.conectarRemoto(coneccionIP);
+			call3.enqueue(new Callback<ResponseBase>() {
+				@Override
+				public void onResponse(Call<ResponseBase> call, Response<ResponseBase> response) {
+					try {
+						if (response.body().isEstatus()){
+							//Log.i("RESPUESTA: ", ""+response.body().getMensaje());
+							pasarSiguiente(response, coneccionIP);
+						}else {
+							dialog.dismiss();
+						}
+					}catch (Exception e){
+						intMensage("Error de conexión.");
+					}
+
 				}
-			}
-			@Override
-			public void onFailure(Call<ResponseBase> call, Throwable t) {
-				Log.e("ERROR", ""+t.getMessage()+"");
-				dialog.dismiss();
-				FancyToast.makeText(ConectarIP.this,"Verificar dirección IP, no se pudo conectar",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
-				//Toast.makeText(ConectarIP.this, "IP incorrecto", Toast.LENGTH_LONG).show();
-				call.cancel();
-			}
-		});
+				@Override
+				public void onFailure(Call<ResponseBase> call, Throwable t) {
+					//Log.e("ERROR", ""+t.getMessage()+"");
+					try {
+						dialog.dismiss();
+						FancyToast.makeText(ConectarIP.this,"Verificar dirección IP, no se pudo conectar",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+						//Toast.makeText(ConectarIP.this, "IP incorrecto", Toast.LENGTH_LONG).show();
+						//call.cancel();
+					}catch (Exception e){
+						intMensage("Error de conexión.");
+					}
+				}
+			});
+		}catch (NullPointerException e){
+			version.setText(coneccionIP);
+			intMensage("1. Error de conexión. Verifica su red o IP");
+		} catch (IllegalArgumentException e){
+			version.setText(coneccionIP);
+			intMensage("2. Error de conexión. Verifica su red o IP");
+		} catch (Exception e){
+			version.setText(coneccionIP);
+			intMensage("3. Error de conexión. Verifica su red o IP");
+		}
+	}
+
+	private void intMensage(String message) {
+		FancyToast.makeText(ConectarIP.this,message,FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
+		dialog.dismiss();
 	}
 
 	private void pasarSiguiente(final Response<ResponseBase> response, final String coneccionIP) {

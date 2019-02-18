@@ -32,7 +32,7 @@ public class AccederCurp extends AppCompatActivity {
 		setContentView(R.layout.activity_acceder_curp);
 
 		Bundle bundle = getIntent().getExtras();
-		coneccionIP = bundle.getString("key_direccionIP");
+		coneccionIP = bundle.getString("key_direccionIP", "error");
 
 		dialog=new SpotsDialog(AccederCurp.this);
 		btnCURP=(Button)findViewById(R.id.btnValidarCurp);
